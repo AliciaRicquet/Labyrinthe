@@ -69,17 +69,11 @@ public class MaDemoIG {
 		// Mettre en sélection l'objet 2
 		IG.changerObjetSelectionne(2);
 		
-		// Place les joueurs sur le plateau
-
-		for (int i=0;i<nbJoueurs;i++)
-			IG.placerJoueurSurPlateau(i,1+i,1+i);
-		IG.miseAJourAffichage();
-		IG.attendreClic();
-		
-		// Place tous les joueurs sur la même piéce
+		// Place tous les joueurs sur le plateaux
 	
-		for (int i=0;i<nbJoueurs;i++)
-			IG.placerJoueurSurPlateau(i,1,1);
+        IG.placerJoueurSurPlateau(0,0,0);
+        IG.placerJoueurSurPlateau(1, 0, 6);
+        IG.placerJoueurSurPlateau(2, 6, 6);
 		IG.miseAJourAffichage();
 		IG.attendreClic();
 		
