@@ -1,9 +1,7 @@
 package tests;
 import grafix.interfaceGraphique.IG;
 
-
-public class DemoIG19 {
-
+public class MaDemoIG {
 	public static void main(String[] args) {
 		// Une petite démonstration conernant l'interface graphique
 
@@ -153,3 +151,4 @@ public class DemoIG19 {
 	}
 
 }
+

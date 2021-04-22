@@ -1,9 +1,10 @@
 {
     "java.project.referencedLibraries": [
         "lib/**/*.jar",
-        "src/libIG19.jar"
+        "src/tests/libIG19.jar"
     ],
     "java.project.sourcePaths": [
-        "src/tests"
+        "src/tests",
+        "src"
     ]
 }
