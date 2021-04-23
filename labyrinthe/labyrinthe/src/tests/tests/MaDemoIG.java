@@ -61,8 +61,10 @@ public class MaDemoIG {
 		// Place des objets sur le plateau
 		int numObjet=0;
 		for (int i=0;i<7;i++)
-			for (int j=0;j<7;j++)
-				IG.placerObjetPlateau((numObjet++)%18,i,j);
+			for (int j=0;j<7;j++){
+				if (numObjet<18)
+					IG.placerObjetPlateau((numObjet++)%18,i,j);
+			}
 		IG.miseAJourAffichage();
 		IG.attendreClic();
 		
@@ -71,9 +73,8 @@ public class MaDemoIG {
 		
 		// Place tous les joueurs sur le plateaux
 	
-        IG.placerJoueurSurPlateau(0,0,0);
-        IG.placerJoueurSurPlateau(1, 0, 6);
-        IG.placerJoueurSurPlateau(2, 6, 6);
+        IG.placerJoueurSurPlateau(0,3,0);
+        IG.placerJoueurSurPlateau(1, 3, 6);
 		IG.miseAJourAffichage();
 		IG.attendreClic();
 		
