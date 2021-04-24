@@ -28,35 +28,32 @@ public class MaDemoIG {
 		};
 		IG.afficherMessage(message); // On change de message de la fenêtre de jeu
 		IG.miseAJourAffichage(); // On effectue le rafraichissement de la fenêtre de jeu
-		IG.attendreClic();  // On attend un clic de souris
 		
-		// Changement d'une piéce sur le plateau
-		IG.changerPiecePlateau(3,4,2,1);
-		IG.miseAJourAffichage();
-		IG.attendreClic();
 		
 		// Changement des caractéristiques du premier joueur avec les paramétres saisis
 		int numImageJoueur0=((Integer)parametres[3]).intValue();
 		String nomJoueur0=(String)parametres[1];
 		String categorieJoueur0=(String)parametres[2];
-		IG.attendreClic();
 		IG.changerNomJoueur(0, nomJoueur0+" ("+categorieJoueur0+")");
 		IG.changerImageJoueur(0,numImageJoueur0);
 		IG.miseAJourAffichage();
-		IG.attendreClic();
+		
+
+		// Piece modele 2 orientation 0
+		for (int i=0; i<7; i++){
+			for (int j=0; j<7; j++){
+				IG.changerPiecePlateau(i, j, 2, 0);
+			}
+		}
 		
 		// Changement d'objets au premier joueur et second joueur
 	
-		for (int i=0;i<4;i++){
+		for (int i=0;i<9;i++){
 			IG.changerObjetJoueur(0,i,i);
-			IG.changerObjetJoueur(1,i+7,i);
-		}
-		for (int i=4;i<6;i++){
-			IG.changerObjetJoueurAvecTransparence(0,i,i);
-			IG.changerObjetJoueurAvecTransparence(1,i+7,i);
+			IG.changerObjetJoueur(1,i+9,i);
 		}
 		IG.miseAJourAffichage();
-		IG.attendreClic();
+
 		
 		// Place des objets sur le plateau
 		int numObjet=0;
@@ -66,18 +63,17 @@ public class MaDemoIG {
 					IG.placerObjetPlateau((numObjet++)%18,i,j);
 			}
 		IG.miseAJourAffichage();
-		IG.attendreClic();
 		
 		// Mettre en sélection l'objet 2
 		IG.changerObjetSelectionne(2);
 		
 		// Place tous les joueurs sur le plateaux
 	
-        IG.placerJoueurSurPlateau(0,3,0);
-        IG.placerJoueurSurPlateau(1, 3, 6);
+
 		IG.miseAJourAffichage();
-		IG.attendreClic();
-		
+		IG.placerJoueurPrecis(0, 3, 0, 1, 0);
+		IG.placerJoueurPrecis(1, 3, 6, 1, 2);
+
 		// Place des billes sur les lignes 2 et 3
 		for (int i=0;i<7;i++)
 			for (int j=0;j<3;j++){
@@ -92,17 +88,7 @@ public class MaDemoIG {
 		IG.miseAJourAffichage();
 		IG.attendreClic();
 		
-		// Sélectionne la flêche 3
-		IG.selectionnerFleche(3);
-		IG.miseAJourAffichage();
-		IG.attendreClic();
 		
-		// Sélectionne la piéce sur le plateau Ã  la ligne 2 colonne 3.
-		IG.selectionnerPiecePlateau(2,3);
-		IG.miseAJourAffichage();
-		IG.attendreClic();
-				
-	
 		
 		// Change la piéce hors du plateau
 		IG.changerPieceHorsPlateau(2,2);
