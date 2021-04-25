@@ -75,8 +75,6 @@ public class MaDemoIG {
 			}
 		IG.miseAJourAffichage();
 		
-		// Mettre en sélection l'objet 2
-		IG.changerObjetSelectionne(2);
 		
 		// Place tous les joueurs sur le plateaux
 	
