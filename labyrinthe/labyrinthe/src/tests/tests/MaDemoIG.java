@@ -45,6 +45,9 @@ public class MaDemoIG {
 				IG.changerPiecePlateau(i, j, 2, 0);
 			}
 		}
+		// Change la piéce hors du plateau
+		IG.changerPieceHorsPlateau(1,0);
+		IG.miseAJourAffichage();
 		
 		// Changement d'objets au premier joueur et second joueur
 	
@@ -70,36 +73,63 @@ public class MaDemoIG {
 		// Place tous les joueurs sur le plateaux
 	
 
-		IG.miseAJourAffichage();
+		
 		IG.placerJoueurPrecis(0, 3, 0, 1, 0);
 		IG.placerJoueurPrecis(1, 3, 6, 1, 2);
-
-		// Place des billes sur les lignes 2 et 3
-		for (int i=0;i<7;i++)
-			for (int j=0;j<3;j++){
-				IG.placerBilleSurPlateau(2,i,1,j,j);
-				IG.placerBilleSurPlateau(3,i,1,j,j+1);
-			}
 		IG.miseAJourAffichage();
 		IG.attendreClic();
+
+		// modification 4 clic piece
+		for (int x = 1; x<5;x++){
+			for (int i=0; i<7; i++){
+				for (int j=0; j<7; j++){
+					if (x==4){
+						IG.changerPiecePlateau(i, j, 2, 0);
+
+					}else{
+						IG.changerPiecePlateau(i, j, 2, x);
+					}
+				}
+			}
+			IG.changerPieceHorsPlateau(1, x);
+			IG.attendreClic();
+			IG.miseAJourAffichage();
+		}
+		// modification 4 clic joueur
+
+		//IG.placerJoueurPrecis(0, 3, 1, 1, 1);
+		//IG.placerJoueurPrecis(1, 3, 5, 1, 2);
+
+		//IG.placerJoueurPrecis(0, 3, 0, 1, x-2);
+		//IG.placerJoueurPrecis(1, 3, 6, 1, 2-x+1);
+
+		//IG.placerJoueurPrecis(0, 3, 0, 1, x+1);
+		//IG.placerJoueurPrecis(1, 3, 6, 1, 2-x+1);
+
+		//IG.placerJoueurPrecis(0, 3, 0, 1, x+1);
+		//IG.placerJoueurPrecis(1, 3, 6, 1, x);
+
 		
+		// modification 4 clic bille
+
+		//IG.placerBilleSurPlateau(3,0,1,0,2);
+		//IG.placerBilleSurPlateau(3,6,1,0,2);
+
+		//IG.placerBilleSurPlateau(3,0,1,x,2);
+		//IG.placerBilleSurPlateau(3,6,1,x-2,2);
+
+		//IG.placerBilleSurPlateau(3,0,1,x,2);
+		//IG.placerBilleSurPlateau(3,6,1,x,2);
+
+		//IG.placerBilleSurPlateau(3,0,1,x,2);
+		//IG.placerBilleSurPlateau(3,6,1,x,2);
+
 		// Sélectionne le joueur 1
 		IG.changerJoueurSelectionne(1);
 		IG.miseAJourAffichage();
 		IG.attendreClic();
-		
-		
-		
-		// Change la piéce hors du plateau
-		IG.changerPieceHorsPlateau(2,2);
-		IG.miseAJourAffichage();
-		IG.attendreClic();
-		message[0]="";
-		message[1]="Rotationner la piéce qui se ";
-		message[2]="trouve hors du plateau ... ";
-		message[3]="Puis sélectionner une flêche ...";
-		IG.afficherMessage(message);
-		IG.miseAJourAffichage();
+	
+
 		// Attente d'un clic sur une entrée
 		int entree=IG.attendreChoixEntree();
 		
