@@ -2,5 +2,9 @@
     "java.project.referencedLibraries": [
         "lib/**/*.jar",
         "src/libIG19.jar"
+    ],
+    "java.project.sourcePaths": [
+        "src/tests",
+        "src"
     ]
 }
