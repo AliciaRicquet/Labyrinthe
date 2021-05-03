@@ -16,9 +16,9 @@ The workspace contains two folders by default, where:
 - `DemoIG19` : qui montre comment fonctionne certaines classes
 - `MaDemoIG` : classe créer par EH et IB pour tester le programme (étape 1)
 - `Utils` : classe à créer 
-- `Piece` : classe à faire par IB
-- `PieceM0` : classe à faire par AR
-- `PieceM1` : classe à faire par SA
+- `Piece` : classe à faire IB
+- `PieceM0` : classe faite par AR
+- `PieceM1` : classe faite par SA
 - `PieceM2` : classe à faire par EH
 
 ## Dependency Management
