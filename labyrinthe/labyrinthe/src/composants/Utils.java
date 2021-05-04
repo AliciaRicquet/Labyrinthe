@@ -13,7 +13,7 @@ public class Utils {
 	private static Random generateur = new Random((new Date().getTime()));
 
 	/**
-	 * A Faire (02/05/21 EH Finilalisé)
+	 * A Faire (02/05/21 EH Finilalisée)
 	 * 
 	 * Méthode permettant de générer aléatoirement un nombre entier.
 	 * 
