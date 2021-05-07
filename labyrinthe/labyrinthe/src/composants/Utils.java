@@ -24,7 +24,7 @@ public class Utils {
 		return generateur.nextInt(max);
 	}
 	/**
-	 * A Faire (02/05/21 EH EnCours)
+	 * A Faire (07/05/21 EH finalisée)
 	 * 
 	 * Méthode permettant de générer un tableau d'entiers dont la longueur longTab est donnée en paramètre.
 	 * Le tableau généré doit contenir chaque entier compris entre 0 et longTab-1. La position de ces entiers
@@ -34,7 +34,16 @@ public class Utils {
 	 * @return Un tableau contenant les entiers 0,...,longTab-1 placés aléatoirement dans le tableau.
 	 */
 	public static int[] genereTabIntAleatoirement(int longTab){
-			int tab[] =null;
+			int tab[] =new int[longTab];
+			for (int i=0; i<longTab;i++){
+				tab[i]=i;
+			}
+			for (int i=0; i<longTab;i++){
+				int temp = tab[i];
+				int temp2 = genererEntier(longTab);
+				tab[i] = tab[temp2];
+				tab[temp2] = temp;
+			}
 		return tab;
 	}
 	/**
