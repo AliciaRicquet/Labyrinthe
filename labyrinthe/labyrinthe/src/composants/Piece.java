@@ -48,14 +48,24 @@ abstract public class Piece {
 	 */
 
 	public void rotation(){
-		if (orientationPiece == 0) 
-			orientationPiece +=1;
-		else if (orientationPiece == 1)
-			orientationPiece +=1;
-		else if (orientationPiece == 2)
-			orientationPiece +=1;
-		else if (orientationPiece ==3)
-			orientationPiece = 0;
+        if (getModelePiece() == 2 || getModelePiece() == 0){
+            if (orientationPiece == 0){
+                orientationPiece +=1;
+            }     
+		    else if (orientationPiece == 1)
+			    orientationPiece +=1;
+		    else if (orientationPiece == 2)
+			    orientationPiece +=1;
+		    else if (orientationPiece ==3)
+			    orientationPiece = 0;
+        }else{
+            if (orientationPiece == 0){
+                orientationPiece +=1;
+            }   
+		    else if (orientationPiece == 1)
+			    orientationPiece +=0;
+        }
+
 		
 		
 	}
@@ -99,7 +109,7 @@ abstract public class Piece {
 	 * @return true si il y a un point d'entrée, sinon false.
 	 */
 	public boolean getPointEntree(int pointEntree){
-		if (this.pointsEntree[pointEntree]== true)
+		if (this.pointsEntree[pointEntree] == true)
 			return true;
 		else return false;
 	}
