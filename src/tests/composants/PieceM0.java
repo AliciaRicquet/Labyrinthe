@@ -22,7 +22,7 @@ public class PieceM0 extends Piece {
 	 * @return Une copie de la pièce.
 	 */
 	public Piece copy(){
-		Piece piece=null;
+		Piece piece= new Piece[];;
 		piece = new PieceM0();
 		return piece;
 	}
