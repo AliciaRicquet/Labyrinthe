@@ -1,6 +1,5 @@
 package composants;
 
-
 /**
  * 
  * Cette classe permet de representer les differentes pieces du jeu.
@@ -123,8 +122,17 @@ abstract public class Piece {
 	 * @return Un tableau contenant toutes les pieces du jeu.
 	 */
 	public static Piece[] nouvellesPieces(){
-		Piece pieces[]=null;
-		// A Completer (A Faire aprés les classes PieceM0, PieceM1 et PieceM2)
+		Piece pieces[]=new Piece[50];
+        // A Completer (A Faire aprés les classes PieceM0, PieceM1 et PieceM2)
+        for (int i=0; i<50;i++){
+            if (i<20){
+                pieces[i]=PieceM0();
+			}else if(i<32){
+				pieces[i]=PieceM1();
+			}else{
+				pieces[i]=PieceM2();
+			}
+		}
 		return pieces;
 	}
 	
