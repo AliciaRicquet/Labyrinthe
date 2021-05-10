@@ -47,27 +47,13 @@ abstract public class Piece {
 	 */
 
 	public void rotation(){
-        if (getModelePiece() == 2 || getModelePiece() == 0){
-            if (orientationPiece == 0){
-                orientationPiece +=1;
-            }     
-		    else if (orientationPiece == 1)
-			    orientationPiece +=1;
-		    else if (orientationPiece == 2)
-			    orientationPiece +=1;
-		    else if (orientationPiece ==3)
-			    orientationPiece = 0;
-        }else{
-            if (orientationPiece == 0){
-                orientationPiece +=1;
-            }   
-		    else if (orientationPiece == 1)
-			    orientationPiece +=0;
-        }
 
-		
-		
-	}
+		    if (orientationPiece ==3)
+			    orientationPiece = 0;
+			else{
+				orientationPiece++;
+			}
+        }
 	
 	/**
 	 * A Faire (02/05/21 IB Finalisé)
@@ -126,11 +112,11 @@ abstract public class Piece {
         // A Completer (A Faire aprés les classes PieceM0, PieceM1 et PieceM2)
         for (int i=0; i<50;i++){
             if (i<20){
-                pieces[i]=PieceM0();
+                pieces[i]= new PieceM0();
 			}else if(i<32){
-				pieces[i]=PieceM1();
+				pieces[i]=new PieceM1();
 			}else{
-				pieces[i]=PieceM2();
+				pieces[i]=new PieceM2();
 			}
 		}
 		return pieces;

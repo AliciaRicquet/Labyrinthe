@@ -22,10 +22,9 @@ public class PieceM1 extends Piece {
 	 * @return Une copie de la pièce.
 	 */
 	public Piece copy(){
-		Piece piece= new Piece[];
-        piece = newPieceM1();
+        Piece piece = new PieceM1();
 		return piece;
 	}
 }
 
-}
+
