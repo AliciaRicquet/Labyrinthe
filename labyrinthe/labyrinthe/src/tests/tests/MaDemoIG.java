@@ -158,7 +158,5 @@ public class MaDemoIG {
 		IG.pause(2000);
 		IG.fermerFenetreJeu();
 		System.exit(0);
-		
-		
 	}
 }

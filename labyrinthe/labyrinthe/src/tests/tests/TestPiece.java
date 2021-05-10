@@ -27,7 +27,7 @@ public class TestPiece {
         IG.miseAJourAffichage(); // On effectue le rafraichissement de la fenêtre de jeu
 		IG.attendreClic();
 		
-		//initialisation du plateau
+		//Initialisation du plateau.
 		int x = 0;
 		Piece[] tab = Piece.nouvellesPieces();
 		for (int i=0;i<50;i++){
@@ -36,32 +36,37 @@ public class TestPiece {
 		for (int i=0; i<7; i++){
 			for (int j=0; j<7; j++){
 				IG.changerPiecePlateau(i, j, tab[x].getModelePiece(), tab[x].getOrientationPiece());
+				System.out.println(tab[x].toString());
 				x++;
 			}
 		}
 		IG.changerPieceHorsPlateau(tab[x].getModelePiece(), tab[x].getOrientationPiece());
+		System.out.println(tab[x].toString());
 		IG.miseAJourAffichage();
 
-		//modification du plateau avec une rotation de chaque piece par clic
+		//Modification du plateau avec une rotation de chaque piece par clic.
 		x=0;
 		for (int k=0; k<4;k++){
+			IG.attendreClic();
+			//Boucle de rotation de chaque piece dans le tableau.
 			for (int i=0; i<50; i++){
 					tab[i].rotation();
 			}
 			x=0;
+			//Changement des pieces dans le plateau avec les nouvelles orientations.
 			for (int i=0; i<7; i++){
 				for (int j=0; j<7; j++){
 					System.out.println(tab[x].toString());
 					IG.changerPiecePlateau(i, j, tab[x].getModelePiece(), tab[x].getOrientationPiece());
-
 					x++;
 				}
 			}
 			IG.changerPieceHorsPlateau(tab[x].getModelePiece(), tab[x].getOrientationPiece());
 			System.out.println(tab[x].toString());
-			IG.attendreClic();
 			IG.miseAJourAffichage();
 		}
+		IG.attendreClic();
 		IG.fermerFenetreJeu();
+		System.exit(0);
 	}
 }
