@@ -1,6 +1,5 @@
 package composants;
 
-
 /**
  * 
  * Cette classe permet de representer les differentes pieces du jeu.
@@ -48,17 +47,14 @@ abstract public class Piece {
 	 */
 
 	public void rotation(){
-		if (orientationPiece == 0) 
-			orientationPiece +=1;
-		else if (orientationPiece == 1)
-			orientationPiece +=1;
-		else if (orientationPiece == 2)
-			orientationPiece +=1;
-		else if (orientationPiece ==3)
-			orientationPiece = 0;
-		
-		
-	}
+		boolean tab[]=new boolean[] {getPointEntree(3),getPointEntree(0),getPointEntree(1),getPointEntree(2)};
+	    if (orientationPiece ==3)
+		    orientationPiece = 0;
+		else{
+			orientationPiece++;
+		}
+		pointsEntree =tab;
+    }
 	
 	/**
 	 * A Faire (02/05/21 IB Finalisé)
@@ -67,6 +63,14 @@ abstract public class Piece {
 	 * @param orientationPiece Un entier correspondant à  la nouvelle orientation de la piece.
 	 */
 	public void setOrientation(int orientationPiece){
+		int tmp = this.orientationPiece;
+		while (tmp != orientationPiece){
+			tmp++;
+			if (tmp==4){
+				tmp=0;
+			}
+			rotation();
+		}
 		this.orientationPiece=orientationPiece;
 	}
 
@@ -99,7 +103,7 @@ abstract public class Piece {
 	 * @return true si il y a un point d'entrée, sinon false.
 	 */
 	public boolean getPointEntree(int pointEntree){
-		if (this.pointsEntree[pointEntree]== true)
+		if (this.pointsEntree[pointEntree] == true)
 			return true;
 		else return false;
 	}
@@ -113,8 +117,16 @@ abstract public class Piece {
 	 * @return Un tableau contenant toutes les pieces du jeu.
 	 */
 	public static Piece[] nouvellesPieces(){
-		Piece pieces[]=null;
-		// A Completer (A Faire aprés les classes PieceM0, PieceM1 et PieceM2)
+		Piece pieces[]=new Piece[50];
+        for (int i=0; i<50;i++){
+            if (i<20){
+                pieces[i]= new PieceM0();
+			}else if(i<32){
+				pieces[i]=new PieceM1();
+			}else{
+				pieces[i]=new PieceM2();
+			}
+		}
 		return pieces;
 	}
 	
