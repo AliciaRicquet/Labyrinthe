@@ -9,7 +9,6 @@ import java.util.Random;
  * 
  */
 public class Utils {
-	
 	private static Random generateur = new Random((new Date().getTime()));
 
 	/**
