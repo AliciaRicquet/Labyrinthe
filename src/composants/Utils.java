@@ -9,7 +9,6 @@ import java.util.Random;
  * 
  */
 public class Utils {
-	
 	private static Random generateur = new Random((new Date().getTime()));
 
 	/**
@@ -21,7 +20,7 @@ public class Utils {
 	 * @return Un nombre entier compris entre 0 et max (inclus).
 	 */
 	public static int genererEntier(int max){
-		return generateur.nextInt(max);
+		return generateur.nextInt(max+1);
 	}
 	/**
 	 * A Faire (07/05/21 EH finalisée)
