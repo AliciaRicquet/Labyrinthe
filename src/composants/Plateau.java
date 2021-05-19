@@ -200,11 +200,6 @@ public class Plateau {
 				}
 			}
 		}
-		for (int i = 0;i<resultat.length;i++){
-			for (int j=0; j<2;j++){
-				System.out.println(resultat[i][j]);
-			}
-        }
 		return resultat;
 	}
 	/**
