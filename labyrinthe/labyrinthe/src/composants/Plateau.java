@@ -195,8 +195,9 @@ public class Plateau {
 		if (!chemin.isEmpty()){
 			resultat= new int[chemin.size()][2];
 			for (int i=0; i<chemin.size();i++){
-				resultat[i][0]=chemin.get(i)[0];
-				resultat[i][1]=chemin.get(i)[1];
+				for (int j=0; j<2;j++){
+					resultat[i][j]=chemin.get(i)[j];
+				}
 			}
 		}
 		return resultat;
