@@ -3,7 +3,19 @@ import composants.Piece;
 import composants.Utils;
 import grafix.interfaceGraphique.IG;
 
+	/**
+	 * 
+	 * Cette classe permet de tester les differentes méthode crée pour la realisation du jeu.
+	 * 
+	 */
+
 public class TestPiece {
+	/**
+	 * 
+	 * Methode main permetants d'afficher et tester une partie du jeu realisé.
+	 * 
+	 * 
+	 */
     public static void main(String[] args) {
 		// Une petite démonstration conernant l'interface graphique
 

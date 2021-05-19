@@ -3,7 +3,19 @@ import composants.Plateau;
 import composants.Piece;
 import grafix.interfaceGraphique.IG;
 
+    /**
+	 * 
+	 * Cette classe permet de tester les differentes méthode crée pour la realisation du jeu.
+	 * 
+	 */
+
 public class TestPlateau {
+    /**
+	 * 
+	 * Methode main permetants d'afficher et tester une partie du jeu realisé.
+	 * 
+	 * 
+	 */
     public static void main(String[] args) {
 		// Une petite démonstration conernant l'interface graphique
 
@@ -36,7 +48,35 @@ public class TestPlateau {
 		}
         IG.changerPieceHorsPlateau(pieceHorsPlateau.getModelePiece(), pieceHorsPlateau.getOrientationPiece());
         IG.miseAJourAffichage();
-
-        System.out.println(plateau.calculeChemin(3,3,4,5));
+        int maxi=0;
+        System.out.println("La liste des chemins trouvés à partir de la case (3,3) :");
+        System.out.println();
+        for (int i=0;i<7;i++){
+            for (int j=0;j<7;j++){
+                int[][] resultat = plateau.calculeChemin(3, 3, i, j);
+                if (plateau.calculeChemin(3, 3, i, j)!=null){
+                    System.out.println("Chemin entre la case (3,3) et (" + i + "," + j +") : "+plateau.calculeChemin(3, 3, i, j));
+                    if(resultat.length>maxi){
+                        maxi=resultat.length;
+                    }
+                }
+            }
+        }
+        for (int i=0;i<7;i++){
+            for (int j=0;j<7;j++){
+                int[][] resultat = plateau.calculeChemin(3, 3, i, j);
+                if (plateau.calculeChemin(3, 3, i, j)!=null && resultat.length==maxi){
+                    for (int k=0; k<resultat.length;k++){
+                        IG.placerBilleSurPlateau(resultat[k][0], resultat[k][1], 1, 1, 0);
+                    }
+                    break;
+                }
+            }
+        }
+        IG.attendreClic();
+        IG.miseAJourAffichage();
+        IG.attendreClic();
+        IG.fermerFenetreJeu();
+		System.exit(0);
     }
 }
