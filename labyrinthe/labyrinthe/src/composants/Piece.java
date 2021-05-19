@@ -103,13 +103,16 @@ abstract public class Piece {
 	 * @return true si il y a un point d'entrée, sinon false.
 	 */
 	public boolean getPointEntree(int pointEntree){
-		if (this.pointsEntree[pointEntree] == true)
-			return true;
-		else return false;
+		return pointsEntree[pointEntree];
 	}
-	
+	public void affichage(){
+		for (int i=0; i<pointsEntree.length;i++){
+			System.out.println(pointsEntree[i]);
+		}
+		
+	}
 	/**
-	 * A Faire (02/05/21 IB EnCours)
+	 * A Faire (10/05/21 IB/EH Finalisée)
 	 * 
 	 * Méthode permettant de créer un tableau contenant toutes les pieces du jeu (les 50 pieces).
 	 * Le tableau contiendra 20 pieces du modele 0, 12 pieces du modele 1 et 18 pieces du modele 2.
@@ -119,6 +122,8 @@ abstract public class Piece {
 	public static Piece[] nouvellesPieces(){
 		Piece pieces[]=new Piece[50];
         for (int i=0; i<50;i++){
+			//pieces[i]=new PieceM1();
+			//pieces[i].setOrientation(1);
             if (i<20){
                 pieces[i]= new PieceM0();
 			}else if(i<32){

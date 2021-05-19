@@ -1,4 +1,5 @@
 package composants;
+import java.util.Vector;
 
 /**
  * Cette classe permet de gérer un plateau de jeu constitué d'une grille de pièces (grille de 7 lignes sur 7 colonnes).
@@ -14,7 +15,7 @@ public class Plateau {
 	 * Constructeur permettant de construire un plateau vide (sans pièces) et d'une taille de 7 lignes sur 7 colonnes.
 	 */
 	public Plateau() {
-        this.plateau = new Piece[6][6];
+        this.plateau = new Piece[7][7];
 	}
 
 	/**
@@ -57,8 +58,8 @@ public class Plateau {
 		Piece[] tab = Piece.nouvellesPieces();
         Piece tmp;
         int tmp2;
-        for (int i=0;i<tab.length;i++){
-            tmp2 = Utils.genererEntier(tab.length);
+        for (int i=0;i<49;i++){
+            tmp2 = Utils.genererEntier(49);
             tmp=tab[i];
             tab[i]=tab[tmp2];
             tab[tmp2]=tmp;
@@ -109,14 +110,11 @@ public class Plateau {
 	 * @return true si les positions passées en paramètre sont les positions de deux cases différentes et adjacentes de la grille de jeu et qu'il est possible de passer d'une cas à  l'autre compte tenu des deux pièces posées sur les deux cases du plateau, false sinon.
 	 */
 	private boolean passageEntreCases(int posLigCase1,int posColCase1,int posLigCase2,int posColCase2){
-		if (casesAdjacentes(posLigCase1, posColCase1, posLigCase2, posColCase2) && 
-		((plateau[posLigCase1][posColCase1].getPointEntree(0) && plateau[posLigCase2][posColCase2].getPointEntree(2))
-		 || (plateau[posLigCase1][posColCase1].getPointEntree(1) && plateau[posLigCase2][posColCase2].getPointEntree(3))
-		  || (plateau[posLigCase1][posColCase1].getPointEntree(2) && plateau[posLigCase2][posColCase2].getPointEntree(0))
-		   || (plateau[posLigCase1][posColCase1].getPointEntree(3) && plateau[posLigCase2][posColCase2].getPointEntree(1)))){
-			return true;
-		}else
-			return false;
+		return (casesAdjacentes(posLigCase1, posColCase1, posLigCase2, posColCase2) && 
+			((posLigCase1<posLigCase2 && plateau[posLigCase1][posColCase1].getPointEntree(2) && plateau[posLigCase2][posColCase2].getPointEntree(0))// 1 au dessus de 2
+			 || (posColCase1>posColCase2 && plateau[posLigCase1][posColCase1].getPointEntree(3) && plateau[posLigCase2][posColCase2].getPointEntree(1))// 1 a droite de 2
+			  || (posLigCase1>posLigCase2 && plateau[posLigCase1][posColCase1].getPointEntree(0) && plateau[posLigCase2][posColCase2].getPointEntree(2))// 1 en dessous de 2
+			   || (posColCase1<posColCase2 && plateau[posLigCase1][posColCase1].getPointEntree(1) && plateau[posLigCase2][posColCase2].getPointEntree(3)))); // 1 a gauche de 2
 	}
 
 	/**
@@ -138,16 +136,71 @@ public class Plateau {
 	 * @return null si il n'existe pas de chemin entre les deux case, un chemin sinon.
 	 */
 	public int[][] calculeChemin(int posLigCaseDep,int posColCaseDep,int posLigCaseArr,int posColCaseArr){
-		int resultat[][]= null;
-		int visite[][]=new int[50][2];
-		int nbEntrées = 0;
-		
-
+		boolean bool[][] = new boolean[7][7]; // tableau de boolean true si la case a déjà été visité
+		bool[posLigCaseDep][posColCaseDep]=true;
+		int[] couple = new int[2];
+		Vector<int[]> chemin = new Vector<>(); // le chemin pour aller jusque la case de fin
+		int posLigCaseAct = posLigCaseDep;
+		int posColCaseAct = posColCaseDep;
+		couple[0]=posLigCaseDep;
+		couple[1]=posColCaseDep;
+		chemin.add(couple); // première case du chemin
+		//int cpt=0;
+		while (chemin.isEmpty()==false  /*cpt!=20*/){
+			if (bool[posLigCaseArr][posColCaseArr]==true){ // break si la case d'arrivée est atteinte
+				break;
+			}
+			else if (passageEntreCases(posLigCaseAct, posColCaseAct, posLigCaseAct-1, posColCaseAct) && bool[posLigCaseAct-1][posColCaseAct]==false){
+				// case 1 en bas de case 2
+				bool[posLigCaseAct-1][posColCaseAct]=true;
+				posLigCaseAct = posLigCaseAct-1;
+				couple = new int[2];
+				couple[0]=posLigCaseAct;
+				couple[1]=posColCaseAct;
+				chemin.add(couple);
+			}else if (passageEntreCases(posLigCaseAct, posColCaseAct, posLigCaseAct, posColCaseAct-1) && bool[posLigCaseAct][posColCaseAct-1]==false){
+				// case 1 à droite de case 2
+				bool[posLigCaseAct][posColCaseAct-1]=true;
+				posColCaseAct = posColCaseAct-1;
+				couple = new int[2];
+				couple[0]=posLigCaseAct;
+				couple[1]=posColCaseAct;
+				chemin.add(couple);
+			}else if(passageEntreCases(posLigCaseAct, posColCaseAct, posLigCaseAct+1, posColCaseAct) && bool[posLigCaseAct+1][posColCaseAct]==false){
+				// case 1 en haut de case 2
+				bool[posLigCaseAct+1][posColCaseAct]=true;
+				posLigCaseAct = posLigCaseAct+1;
+				couple = new int[2];
+				couple[0]=posLigCaseAct;
+				couple[1]=posColCaseAct;
+				chemin.add(couple);
+			}else if(passageEntreCases(posLigCaseAct, posColCaseAct, posLigCaseAct, posColCaseAct+1) && bool[posLigCaseAct][posColCaseAct+1]==false){
+				// case 1 à gauche de case 2
+				bool[posLigCaseAct][posColCaseAct+1]=true;
+				posColCaseAct = posColCaseAct+1;
+				couple = new int[2];
+				couple[0]=posLigCaseAct;
+				couple[1]=posColCaseAct;
+				chemin.add(couple);
+				
+			}else{
+				chemin.remove(chemin.size()-1); // enleve la derniere case du chemin si aucun chemin n'est possible(ou pas de chemin déjà testé) vers une autre case
+				if (!chemin.isEmpty()){
+					posLigCaseAct=chemin.get(chemin.size()-1)[0]; // enleve la coordonnée de ligne de la derniere case
+					posColCaseAct=chemin.get(chemin.size()-1)[1]; // enleve la coordonnée de colone de la derniere case
+				}
+			}
+		}
+		int resultat[][]=null;
+		if (!chemin.isEmpty()){
+			resultat= new int[chemin.size()][2];
+			for (int i=0; i<chemin.size();i++){
+				resultat[i][0]=chemin.get(i)[0];
+				resultat[i][1]=chemin.get(i)[1];
+			}
+		}
 		return resultat;
 	}
-
-
-
 	/**
 	 * 
 	 * Méthode permettant de calculer un chemin détaillé (chemin entre sous-cases) à  partir d'un chemin entre cases.
