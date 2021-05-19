@@ -55,7 +55,10 @@ public class TestPlateau {
             for (int j=0;j<7;j++){
                 int[][] resultat = plateau.calculeChemin(3, 3, i, j);
                 if (plateau.calculeChemin(3, 3, i, j)!=null){
-                    System.out.println("Chemin entre la case (3,3) et (" + i + "," + j +") : "+plateau.calculeChemin(3, 3, i, j));
+                    System.out.print("\nChemin entre la case (3,3) et (" + i + "," + j +") : ");
+                    for(int n = 0; n < resultat.length; n++) {
+                        System.out.print("("+resultat[n][0]+", " +resultat[n][1] + ")" );
+                    }
                     if(resultat.length>maxi){
                         maxi=resultat.length;
                     }
