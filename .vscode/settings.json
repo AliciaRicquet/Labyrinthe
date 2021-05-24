@@ -1,0 +1,6 @@
+{
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar",
+        "labyrinthe/src/tests/libIG19.jar"
+    ]
+}
