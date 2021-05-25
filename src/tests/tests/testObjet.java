@@ -13,7 +13,7 @@ public class testObjet {
 		
 		// Création de la fenêtre de jeu et affichage de la fenêtre 
 		int nbJoueurs=((Integer)parametres[0]).intValue(); // Récupération du nombre de joueurs
-		IG.creerFenetreJeu("Démo Librairie IG version 1.9",nbJoueurs); // On crée la fenêtre
+		IG.creerFenetreJeu("Test Objet",nbJoueurs); // On crée la fenêtre
 		IG.rendreVisibleFenetreJeu();  // On rend visible la fenêtre de jeu
 
         		// Affichage d'un message
