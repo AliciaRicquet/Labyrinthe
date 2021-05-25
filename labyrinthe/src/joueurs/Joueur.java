@@ -20,8 +20,7 @@ public abstract class Joueur {
 	private int posColonne; // La colonne correspondant Ã  la position du joueur sur le plateau
 
 	/**
-	 * A Faire (Quand Qui Statut)
-	 * 
+	 * A Faire (25/05/2021 SA Finalisee)
 	 * Constructeur permettant de crÃ©er un joueur Ã  partir de son nom, son type et 
 	 * le numÃ©ro de l'image le reprÃ©sentant. La position du joueur sur le plateau doit Ãªtre
 	 * Ã©galement indiquÃ©e. Aucun objet n'est attribuÃ© au joueur (l'attribut objetsJoueur vaudra null aprÃ¨s la construction du joueur).
@@ -33,7 +32,12 @@ public abstract class Joueur {
 	 * @param posColonnePlateau La colonne du plateau sur laquelle est positionnÃ©s le joueur.
 	 */
 	public Joueur(int numJoueur,String nomJoueur, int numeroImagePersonnage,int posLignePlateau,int posColonnePlateau) {
-		// A ComplÃ©ter
+		this.numJoueur = numJoueur;
+		this.nomJoueur = nomJoueur;
+		this.numeroImagePersonnage = numeroImagePersonnage;
+		posLigne = posLignePlateau;
+		posColonne = posLignePlateau;
+		objetsJoueur = null;
 	}
 
 	/**
@@ -78,61 +82,60 @@ public abstract class Joueur {
 
 	/**
 	 * 
-	 * A Faire (Quand Qui Statut)
+	 * A Faire (25/05/2021 SA Finalisee)
 	 *  
 	 * MÃ©thode retournant le nombre d'objets rÃ©cupÃ©rÃ©s par le joueur.
 	 * 
 	 * @return Le nombre d'objets rÃ©cupÃ©rÃ©s par le joueur.
 	 */
 	public int getNombreObjetsRecuperes() {
-		return -1; // A Modifier
+		return nombreObjetsRecuperes;
 	}
 
 
 	/**
-	 * A Faire (Quand Qui Statut)
+	 * A Faire (25/05/2021 SA Finalisee)
 	 *  
 	 * MÃ©thode retournant la ligne du plateau sur laquelle se trouve le joueur.
 	 * @return  La ligne du plateau sur laquelle se trouve le joueur.
 	 */
 	public int getPosLigne() {
-		return -1; // A Modifier
+		return posLigne; // A Modifier
 	}
 
 
 	/**
-	 * A Faire (Quand Qui Statut)
+	 * A Faire (25/05/2021 SA Finalisee)
 	 * 
 	 * MÃ©thode retournant la colonne du plateau sur laquelle se trouve le joueur.
 	 * @return La colonne du plateau sur laquelle se trouve le joueur.
 	 */
 	public int getPosColonne() {
-		return -1; // A Modifier
+		return posColonne; // A Modifier
 	}
 
 
 	/**
-	 * A Faire (Quand Qui Statut)
-	 * 
+	 * A Faire (25/05/2021 SA Finalisee)
 	 * MÃ©thode retournant le nom du joueur.
 	 * @return Le nom du joueur.
 	 */
 	public String getNomJoueur() {
-		return null; // A Modifier
+		return nomJoueur; // A Modifier
 	}
 
 	/**
-	 * A Faire (Quand Qui Statut)
+	 * A Faire (25/05/2021 SA Finalisee)
 	 * 
 	 * MÃ©thode retournant le numÃ©ro de l'image reprÃ©sentant le joueur.
 	 * @return Le numÃ©ro de l'image reprÃ©sentant le joueur.
 	 */
 	public int getNumeroImagePersonnage() {
-		return -1; // A Modifier
+		return numeroImagePersonnage; // A Modifier
 	}
 
 	/**
-	 * A Faire (Quand Qui Statut)
+	 * A Faire (25/05/2021 SA Finalisee)
 	 * 
 	 * MÃ©thode permettant d'affecter au joueur les objets qu'il devra rÃ©cupÃ©rer durant le jeu.
 	 * Attention : cette mÃ©thode devra crÃ©er un nouveau tableau pour l'attribut this.objetsARecuperer.
@@ -140,11 +143,11 @@ public abstract class Joueur {
 	 * @param objetsARecuperer Un tableau contenant les objets Ã  rÃ©cupÃ©rer dans l'ordre.
 	 */
 	public void setObjetsJoueur(Objet objetsARecuperer[]){
-		// A ComplÃ©ter
+		objetsJoueur = objetsARecuperer; 
 	}
 	
 	/**
-	 * A Faire (Quand Qui Statut)
+	 * A Faire (25/05/2021 SA Finalisee)
 	 * 
 	 * MÃ©thode retournant un nouveau tableau contenant les objets attribuÃ©s au joueur. Des objets Ã  rÃ©cupÃ©rer devront Ãªtre
 	 * affectÃ©s au joueur avant tout appel de cette mÃ©thode (on suppose donc que l'attribut objetsJoueur est non null).
@@ -153,15 +156,15 @@ public abstract class Joueur {
 	 */
 	public Objet[] getObjetsJoueur(){
 		Objet resultat[]=null;
-
-		// A ComplÃ©ter
-
+		
+		resultat = objetsJoueur;
+		
 		return resultat;
 	}
 	
 	
 	/**
-	 * A Faire (Quand Qui Statut)
+	 * A Faire (25/05/2021 SA Finalisee)
 	 * 
 	 * MÃ©thode retournant le prochain objet Ã  rÃ©cupÃ©rer par le joueur.
 	 * Avant d'appeler cette mÃ©thode il est nÃ©cessaire de s'assurer qu'il existe encore des objets Ã  rÃ©cupÃ©rer.
@@ -169,29 +172,32 @@ public abstract class Joueur {
 	 * @return Le prochain objet Ã  rÃ©cupÃ©rer par le joueur.
 	 */
 	public Objet getProchainObjet(){
-		return null; // A Modifier
+		if(nombreObjetsRecuperes != objetsJoueur.length){
+			return objetsJoueur[nombreObjetsRecuperes+1];
+		}
+		return null;
 	}
 	
 	/**
 	 * 
-	 * A Faire (Quand Qui Statut)
+	 * A Faire (25/05/2021 SA Finalisee)
 	 * 
 	 * MÃ©thode permettant de rÃ©cupÃ©rer un nouvel objet. Cette mÃ©thode incrÃ©mente simplement de 1 le nombre d'objets qui ont Ã©tÃ© rÃ©cupÃ©rÃ©s.
 	 */
 	public void recupererObjet(){
-		// A ComplÃ©ter
+		nombreObjetsRecuperes ++;
 	}
 	
 
 	/**
-	 * A Faire (Quand Qui Statut)
+	 * A Faire (25/05/2021 SA Finalisee)
 	 * 
 	 * MÃ©thode retournant le numÃ©ro du joueur.
 	 * 
 	 * @return Le numÃ©ro du joueur.
 	 */
 	public int getNumJoueur(){
-		return -1; // A Modifier
+		return numJoueur; // A Modifier
 	}
 	
 	/**
@@ -203,7 +209,8 @@ public abstract class Joueur {
 	 * @param posColonne La colonne de la nouvelle position.
 	 */
 	public void setPosition(int posLigne,int posColonne) {
-		// A ComplÃ©ter
+		this.posLigne = posLigne;
+		this.posColonne = posColonne;
 	}
 	
 	/**
