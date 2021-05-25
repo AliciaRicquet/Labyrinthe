@@ -45,7 +45,6 @@ public class TestPiece {
 		IG.miseAJourAffichage();
 
 		//Modification du plateau avec une rotation de chaque piece par clic.
-		x=0;
 		for (int k=0; k<4;k++){
 			IG.attendreClic();
 			//Boucle de rotation de chaque piece dans le tableau.
