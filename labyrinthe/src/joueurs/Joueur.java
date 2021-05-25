@@ -20,7 +20,7 @@ public abstract class Joueur {
 	private int posColonne; // La colonne correspondant Ã  la position du joueur sur le plateau
 
 	/**
-	 * A Faire (25/05/2021 SA Finalisee)
+	 * A Faire (25/05/2021 IB Finalisee)
 	 * Constructeur permettant de crÃ©er un joueur Ã  partir de son nom, son type et 
 	 * le numÃ©ro de l'image le reprÃ©sentant. La position du joueur sur le plateau doit Ãªtre
 	 * Ã©galement indiquÃ©e. Aucun objet n'est attribuÃ© au joueur (l'attribut objetsJoueur vaudra null aprÃ¨s la construction du joueur).
@@ -82,7 +82,7 @@ public abstract class Joueur {
 
 	/**
 	 * 
-	 * A Faire (25/05/2021 SA Finalisee)
+	 * A Faire (25/05/2021 IB Finalisee)
 	 *  
 	 * MÃ©thode retournant le nombre d'objets rÃ©cupÃ©rÃ©s par le joueur.
 	 * 
@@ -94,7 +94,7 @@ public abstract class Joueur {
 
 
 	/**
-	 * A Faire (25/05/2021 SA Finalisee)
+	 * A Faire (25/05/2021 IB Finalisee)
 	 *  
 	 * MÃ©thode retournant la ligne du plateau sur laquelle se trouve le joueur.
 	 * @return  La ligne du plateau sur laquelle se trouve le joueur.
@@ -105,7 +105,7 @@ public abstract class Joueur {
 
 
 	/**
-	 * A Faire (25/05/2021 SA Finalisee)
+	 * A Faire (25/05/2021 IB Finalisee)
 	 * 
 	 * MÃ©thode retournant la colonne du plateau sur laquelle se trouve le joueur.
 	 * @return La colonne du plateau sur laquelle se trouve le joueur.
@@ -116,7 +116,7 @@ public abstract class Joueur {
 
 
 	/**
-	 * A Faire (25/05/2021 SA Finalisee)
+	 * A Faire (25/05/2021 IB Finalisee)
 	 * MÃ©thode retournant le nom du joueur.
 	 * @return Le nom du joueur.
 	 */
@@ -125,7 +125,7 @@ public abstract class Joueur {
 	}
 
 	/**
-	 * A Faire (25/05/2021 SA Finalisee)
+	 * A Faire (25/05/2021 IB Finalisee)
 	 * 
 	 * MÃ©thode retournant le numÃ©ro de l'image reprÃ©sentant le joueur.
 	 * @return Le numÃ©ro de l'image reprÃ©sentant le joueur.
@@ -190,7 +190,7 @@ public abstract class Joueur {
 	
 
 	/**
-	 * A Faire (25/05/2021 SA Finalisee)
+	 * A Faire (25/05/2021 IB Finalisee)
 	 * 
 	 * MÃ©thode retournant le numÃ©ro du joueur.
 	 * 
@@ -202,7 +202,7 @@ public abstract class Joueur {
 	
 	/**
 	 * 
-	 * A Faire (Quand Qui Statut)
+	 * A Faire (25/05/2021 IB Finalisée)
 	 * 
 	 * MÃ©thode permettant le changement de position du joueur.
 	 * @param posLigne La ligne de la nouvelle position.
