@@ -1,13 +1,6 @@
 {
-    "java.project.sourcePaths": [
-        "src",
-        "labyrinthe/labyrinthe/src/tests/tests"
-    ],
     "java.project.referencedLibraries": [
         "lib/**/*.jar",
-        "labyrinthe/labyrinthe/src/libIG24.jar"
-    ],
-    "java.project.sourcePaths": [
-        "src"
+        "src/libIG24.jar"
     ]
 }
