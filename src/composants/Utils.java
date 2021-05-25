@@ -20,7 +20,7 @@ public class Utils {
 	 * @return Un nombre entier compris entre 0 et max (inclus).
 	 */
 	public static int genererEntier(int max){
-		return generateur.nextInt(max+1);
+		return generateur.nextInt(max);
 	}
 	/**
 	 * A Faire (07/05/21 EH finalisée)

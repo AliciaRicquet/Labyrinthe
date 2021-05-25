@@ -23,7 +23,7 @@ public class Objet {
 	public Objet(int numObjet) {
 		this.numObjet = numObjet;
 		this.poslePlateau = -1;
-		this.poslePlateau = -1;
+		this.posconnePlateau = -1;
 		this.surPlateau = false;
 	}
 
