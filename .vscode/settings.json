@@ -2,5 +2,8 @@
     "java.project.referencedLibraries": [
         "lib/**/*.jar",
         "src/libIG24.jar"
+    ],
+    "java.project.sourcePaths": [
+        "src/tests"
     ]
 }
