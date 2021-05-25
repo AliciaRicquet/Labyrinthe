@@ -32,7 +32,7 @@ public class DemoIG19 {
 		IG.miseAJourAffichage(); // On effectue le rafraichissement de la fenêtre de jeu
 		IG.attendreClic();  // On attend un clic de souris
 		
-		// Changement d'une pièce sur le plateau
+		// Changement d'une piéce sur le plateau
 		IG.changerPiecePlateau(3,4,2,1);
 		IG.miseAJourAffichage();
 		IG.attendreClic();
@@ -78,7 +78,7 @@ public class DemoIG19 {
 		IG.miseAJourAffichage();
 		IG.attendreClic();
 		
-		// Place tous les joueurs sur la même pièce
+		// Place tous les joueurs sur la mÃªme piéce
 	
 		for (int i=0;i<nbJoueurs;i++)
 			IG.placerJoueurSurPlateau(i,1,1);
@@ -99,26 +99,26 @@ public class DemoIG19 {
 		IG.miseAJourAffichage();
 		IG.attendreClic();
 		
-		// Sélectionne la flêche 3
+		// Sélectionne la flÃªche 3
 		IG.selectionnerFleche(3);
 		IG.miseAJourAffichage();
 		IG.attendreClic();
 		
-		// Sélectionne la pièce sur le plateau Ã  la ligne 2 colonne 3.
+		// Sélectionne la piéce sur le plateau Ã  la ligne 2 colonne 3.
 		IG.selectionnerPiecePlateau(2,3);
 		IG.miseAJourAffichage();
 		IG.attendreClic();
 				
 	
 		
-		// Change la pièce hors du plateau
+		// Change la piéce hors du plateau
 		IG.changerPieceHorsPlateau(2,2);
 		IG.miseAJourAffichage();
 		IG.attendreClic();
 		message[0]="";
-		message[1]="Rotationner la pièce qui se ";
+		message[1]="Rotationner la piéce qui se ";
 		message[2]="trouve hors du plateau ... ";
-		message[3]="Puis sélectionner une flêche ...";
+		message[3]="Puis sélectionner une flÃªche ...";
 		IG.afficherMessage(message);
 		IG.miseAJourAffichage();
 		// Attente d'un clic sur une entrée
@@ -128,15 +128,15 @@ public class DemoIG19 {
 		System.out.println("Modele : "+IG.recupererModelePieceHorsPlateau());
 		System.out.println("Orienation : "+IG.recupererOrientationPieceHorsPlateau());
 		
-		// Attente d'un clic sur une pièce
+		// Attente d'un clic sur une piéce
 		message[0]="";
-		message[1]="Sélectionner une pièce sur ";
+		message[1]="Sélectionner une piéce sur ";
 		message[2]="le plateau ... ";
 		message[3]="";	
 		IG.afficherMessage(message);
 		IG.miseAJourAffichage();
 		int choixPiece[]=IG.attendreChoixPiece();
-		System.out.println("Pièce sélectionnée : ("+choixPiece[0]+","+choixPiece[1]+")");
+		System.out.println("Piéce sélectionnée : ("+choixPiece[0]+","+choixPiece[1]+")");
 			
 		
 		message[0]="";
