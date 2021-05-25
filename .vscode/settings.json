@@ -5,7 +5,7 @@
     ],
     "java.project.referencedLibraries": [
         "lib/**/*.jar",
-        "src/libIG19.jar"
+        "labyrinthe/labyrinthe/src/libIG24.jar"
     ],
     "java.project.sourcePaths": [
         "src"
