@@ -60,8 +60,4 @@ public abstract class JoueurOrdinateur extends Joueur {
 	
 	
 
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> Alicia

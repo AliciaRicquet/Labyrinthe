@@ -1,6 +1,5 @@
 package tests;
 import joueurs.Joueur;
-import composants.Utils;
 import composants.Plateau;
 import composants.Piece;
 import grafix.interfaceGraphique.IG;
@@ -109,9 +108,4 @@ public class TestJoueur {
 		System.exit(0);
 
     }
-<<<<<<< HEAD
 }
-=======
-}
-
->>>>>>> Alicia

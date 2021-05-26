@@ -151,9 +151,4 @@ public class ElementsPartie {
 	}
 
 
-<<<<<<< HEAD
 }
-=======
-}
-
->>>>>>> Alicia

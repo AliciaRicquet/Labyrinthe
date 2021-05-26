@@ -65,9 +65,4 @@ public class JoueurHumain extends Joueur {
 	
 	
 
-<<<<<<< HEAD
 }
-=======
-}
-
->>>>>>> Alicia

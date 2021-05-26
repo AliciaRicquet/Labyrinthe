@@ -47,9 +47,4 @@ public class JoueurOrdinateurT0 extends JoueurOrdinateur {
 	}
 	
 
-<<<<<<< HEAD
 }
-=======
-}
-
->>>>>>> Alicia
