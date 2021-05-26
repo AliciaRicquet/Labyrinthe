@@ -109,4 +109,9 @@ public class TestJoueur {
 		System.exit(0);
 
     }
+<<<<<<< HEAD
 }
+=======
+}
+
+>>>>>>> Alicia

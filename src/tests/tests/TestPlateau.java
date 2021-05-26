@@ -83,3 +83,7 @@ public class TestPlateau {
 		System.exit(0);
     }
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> Alicia

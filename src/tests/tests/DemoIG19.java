@@ -29,10 +29,17 @@ public class DemoIG19 {
 					""
 		};
 		IG.afficherMessage(message); // On change de message de la fenêtre de jeu
+<<<<<<< HEAD:src/DemoIG19.java
 		IG.miseAJourAffichage(); // On effectue le rafraichissement de la fenêtre de jeu
 		IG.attendreClic();  // On attend un clic de souris
 		
 		// Changement d'une piéce sur le plateau
+=======
+		IG.miseAJourAffichage(); // On effectue le rafraichissement de la fenètre de jeu
+		IG.attendreClic();  // On attend un clic de souris
+		
+		// Changement d'une pièce sur le plateau
+>>>>>>> Alicia:src/tests/tests/DemoIG19.java
 		IG.changerPiecePlateau(3,4,2,1);
 		IG.miseAJourAffichage();
 		IG.attendreClic();
@@ -78,7 +85,11 @@ public class DemoIG19 {
 		IG.miseAJourAffichage();
 		IG.attendreClic();
 		
+<<<<<<< HEAD:src/DemoIG19.java
+		// Place tous les joueurs sur la mÃªme piéce
+=======
 		// Place tous les joueurs sur la même pièce
+>>>>>>> Alicia:src/tests/tests/DemoIG19.java
 	
 		for (int i=0;i<nbJoueurs;i++)
 			IG.placerJoueurSurPlateau(i,1,1);
@@ -99,26 +110,44 @@ public class DemoIG19 {
 		IG.miseAJourAffichage();
 		IG.attendreClic();
 		
+<<<<<<< HEAD:src/DemoIG19.java
+		// Sélectionne la flÃªche 3
+=======
 		// Sélectionne la flêche 3
+>>>>>>> Alicia:src/tests/tests/DemoIG19.java
 		IG.selectionnerFleche(3);
 		IG.miseAJourAffichage();
 		IG.attendreClic();
 		
+<<<<<<< HEAD:src/DemoIG19.java
+		// Sélectionne la piéce sur le plateau Ã  la ligne 2 colonne 3.
+=======
 		// Sélectionne la pièce sur le plateau à  la ligne 2 colonne 3.
+>>>>>>> Alicia:src/tests/tests/DemoIG19.java
 		IG.selectionnerPiecePlateau(2,3);
 		IG.miseAJourAffichage();
 		IG.attendreClic();
 				
 	
 		
+<<<<<<< HEAD:src/DemoIG19.java
+		// Change la piéce hors du plateau
+=======
 		// Change la pièce hors du plateau
+>>>>>>> Alicia:src/tests/tests/DemoIG19.java
 		IG.changerPieceHorsPlateau(2,2);
 		IG.miseAJourAffichage();
 		IG.attendreClic();
 		message[0]="";
+<<<<<<< HEAD:src/DemoIG19.java
+		message[1]="Rotationner la piéce qui se ";
+		message[2]="trouve hors du plateau ... ";
+		message[3]="Puis sélectionner une flÃªche ...";
+=======
 		message[1]="Rotationner la pièce qui se ";
 		message[2]="trouve hors du plateau ... ";
 		message[3]="Puis sélectionner une flèche ...";
+>>>>>>> Alicia:src/tests/tests/DemoIG19.java
 		IG.afficherMessage(message);
 		IG.miseAJourAffichage();
 		// Attente d'un clic sur une entrée
@@ -128,15 +157,25 @@ public class DemoIG19 {
 		System.out.println("Modele : "+IG.recupererModelePieceHorsPlateau());
 		System.out.println("Orienation : "+IG.recupererOrientationPieceHorsPlateau());
 		
+<<<<<<< HEAD:src/DemoIG19.java
+		// Attente d'un clic sur une piéce
+		message[0]="";
+		message[1]="Sélectionner une piéce sur ";
+=======
 		// Attente d'un clic sur une pièce
 		message[0]="";
 		message[1]="Sélectionner une pièce sur ";
+>>>>>>> Alicia:src/tests/tests/DemoIG19.java
 		message[2]="le plateau ... ";
 		message[3]="";	
 		IG.afficherMessage(message);
 		IG.miseAJourAffichage();
 		int choixPiece[]=IG.attendreChoixPiece();
+<<<<<<< HEAD:src/DemoIG19.java
+		System.out.println("Piéce sélectionnée : ("+choixPiece[0]+","+choixPiece[1]+")");
+=======
 		System.out.println("Pièce sélectionnée : ("+choixPiece[0]+","+choixPiece[1]+")");
+>>>>>>> Alicia:src/tests/tests/DemoIG19.java
 			
 		
 		message[0]="";

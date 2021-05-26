@@ -45,4 +45,9 @@ public class JoueurOrdinateurT2 extends JoueurOrdinateur {
 		return nouveauJoueur;
 	}
 
+<<<<<<< HEAD
 }
+=======
+}
+
+>>>>>>> Alicia

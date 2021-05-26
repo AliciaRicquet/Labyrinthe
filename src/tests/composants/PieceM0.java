@@ -24,5 +24,6 @@ public class PieceM0 extends Piece {
 	public Piece copy(){
 		Piece piece = new PieceM0();
 		return piece;
+
 	}
 }

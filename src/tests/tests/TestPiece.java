@@ -68,4 +68,8 @@ public class TestPiece {
 		IG.fermerFenetreJeu();
 		System.exit(0);
 	}
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> Alicia
