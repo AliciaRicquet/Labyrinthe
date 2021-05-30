@@ -1,6 +1,5 @@
 package tests;
 import joueurs.Joueur;
-import composants.Utils;
 import composants.Plateau;
 import composants.Piece;
 import grafix.interfaceGraphique.IG;
