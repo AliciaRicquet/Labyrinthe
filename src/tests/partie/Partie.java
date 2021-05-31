@@ -31,10 +31,10 @@ public class Partie {
 	}
 
 	/**
-	 * Méthode permettant de paramÃ¨trer et initialiser les éléments de la partie.
+	 * Méthode permettant de paramètrer et initialiser les éléments de la partie.
 	 */
 	private void parametrerEtInitialiser(){
-		// Saisie des différents paramÃ¨tres
+		// Saisie des différents paramètres
 		Object parametresJeu[];
 		parametresJeu=IG.saisirParametres();
 		int nombreJoueurs=((Integer)parametresJeu[0]).intValue();

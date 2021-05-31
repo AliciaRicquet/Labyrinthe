@@ -155,6 +155,19 @@ public class ElementsPartie {
 	 * @param choixEntree L'entrée choisie pour réaliser l'insertion (un nombre entre 0 et 27).
 	 */
 	public void insertionPieceLibre(int choixEntree){
+		int cpt=0;
+			if (choixEntree == 21 || choixEntree == 14)
+				cpt=6;
+			if (choixEntree == 22 || choixEntree == 15)
+				cpt=5;
+			if (choixEntree==23 || choixEntree == 16)
+				cpt=4;
+			if (choixEntree==25 || choixEntree == 18)
+				cpt=-4;
+			if (choixEntree == 26 || choixEntree == 19)
+				cpt=-5;
+			if (choixEntree == 27 || choixEntree == 20)
+				cpt=-6;
 		// Piece hors plateau va en haut à la colone choixEntree
 		if (choixEntree<7){
 			Piece save = plateau.getPiece(6, choixEntree);
@@ -173,13 +186,7 @@ public class ElementsPartie {
 			pieceLibre= save;
 		// Piece hors plateau va en bas à la colone choixEntree-14
 		}else if (choixEntree<21){
-			int cpt=0;
-			if (choixEntree == 14)
-				cpt=6;
-			if (choixEntree == 15)
-				cpt=5;
-			if (choixEntree==16)
-				cpt=4;
+			
 			Piece save = plateau.getPiece(6, choixEntree-14+cpt);
 			for (int i=6; i>0; i--){
 				plateau.positionnePiece(plateau.getPiece(i, choixEntree-14+cpt), i+1, choixEntree-14+cpt);
@@ -188,13 +195,7 @@ public class ElementsPartie {
 			pieceLibre= save;
 		// Piece hors plateau va à gauche à la ligne choixEntree-21
 		}else{
-			int cpt=0;
-			if (choixEntree == 21)
-				cpt=6;
-			if (choixEntree == 22)
-				cpt=5;
-			if (choixEntree==23)
-				cpt=4;
+			
 			Piece save = plateau.getPiece(choixEntree-21+cpt, 0);
 			for (int i=1; i<7; i++){
 				plateau.positionnePiece(plateau.getPiece(choixEntree-21+cpt, i), choixEntree-21+cpt,i+1 );
