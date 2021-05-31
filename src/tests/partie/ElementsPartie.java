@@ -34,6 +34,7 @@ public class ElementsPartie {
 	 */
 	public ElementsPartie(Joueur[] joueurs) {
 		this.joueurs=joueurs;
+		nombreJoueurs=joueurs.length;
 		plateau = new Plateau();
         pieceLibre=plateau.placerPiecesAleatoierment();
 		objets = Objet.nouveauxObjets();
@@ -65,29 +66,34 @@ public class ElementsPartie {
 		int nbObjets=18/nombreJoueurs; // objets par joueurs
 		int nbObjetsattribuer = 0; // objets attribuer aux joueurs
 		Objet[] objetJoueur = new Objet[nbObjets];
+		int tabal[] = Utils.genereTabIntAleatoirement(18);
 		// boucle objets joueur 1 et 2
-		for (int n=0;n<2;n++){
-			while (nbObjetsattribuer<nbObjets){
-				for (int i=0; i<nbObjets;i++){
-					int obj = Utils.genererEntier(17);
-					while (objets[obj]==null){
-						obj = Utils.genererEntier(17);
+		if (nombreJoueurs==2){
+			for (int k=0; k<2; k++){
+				while (nbObjetsattribuer<nbObjets){
+					for (int i=0; i<nbObjets;i++){
+						objetJoueur[i]=objets[tabal[i]];
+						objets[tabal[i]]=null;
 					}
-					objetJoueur[i]=objets[obj];
-					objets[obj]=null;
+					joueurs[k].setObjetsJoueur(objetJoueur);
+					nbObjetsattribuer++;
 				}
-				joueurs[n].setObjetsJoueur(objetJoueur);
-				nbObjetsattribuer++;
+				nbObjetsattribuer = 0;
 			}
 		}
 		// objets joueur 3
 		if(nombreJoueurs==3){
 			// objets joueur 3
-			for (int i=0; i<objets.length;i++){
-				if (objets[i]!=null){
-					objetJoueur[i]=objets[i];
+			for (int k=0; k<3; k++){
+				while (nbObjetsattribuer<nbObjets){
+					for (int i=0; i<nbObjets;i++){
+						objetJoueur[i]=objets[tabal[i]];
+						objets[tabal[i]]=null;
+					}
+					joueurs[k].setObjetsJoueur(objetJoueur);
+					nbObjetsattribuer++;
 				}
-				joueurs[2].setObjetsJoueur(objetJoueur);
+				nbObjetsattribuer = 0;
 			}
 		}
 	}

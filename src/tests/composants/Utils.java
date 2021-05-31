@@ -39,7 +39,7 @@ public class Utils {
 			}
 			for (int i=0; i<longTab;i++){
 				int temp = tab[i];
-				int temp2 = genererEntier(longTab);
+				int temp2 = genererEntier(longTab-1);
 				tab[i] = tab[temp2];
 				tab[temp2] = temp;
 			}
