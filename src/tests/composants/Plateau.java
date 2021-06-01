@@ -310,4 +310,5 @@ public class Plateau {
 				plateau.positionnePiece((this.plateau[ligne][colonne]).copy(), ligne, colonne);
 		return plateau;
 	}
+
 }
