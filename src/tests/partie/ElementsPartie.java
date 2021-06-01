@@ -67,18 +67,19 @@ public class ElementsPartie {
 		int nbObjetsattribuer = 0; // objets attribuer aux joueurs
 		Objet[] objetJoueur = new Objet[nbObjets];
 		int tabal[] = Utils.genereTabIntAleatoirement(18);
-		// boucle pour attribuer les objets aux joueurs 
-		for (int k=0; k<nombreJoueurs; k++){
-			while (nbObjetsattribuer<nbObjets){
-				for (int i=0; i<nbObjets;i++){
-					objetJoueur[i]=objets[tabal[i+(k*nbObjets)]];
+		// boucle objets il y a 2 joueurs
+			for (int k=0; k<nombreJoueurs; k++){
+				while (nbObjetsattribuer<nbObjets){
+					for (int i=0; i<nbObjets;i++){
+						objetJoueur[i]=objets[tabal[i+(k*nbObjets)]];
+					}
+					joueurs[k].setObjetsJoueur(objetJoueur);
+					nbObjetsattribuer++;
 				}
-				joueurs[k].setObjetsJoueur(objetJoueur);
-				nbObjetsattribuer++;
+				nbObjetsattribuer = 0;
+				objetJoueur = new Objet[nbObjets];
 			}
-			objetJoueur = new Objet[nbObjets];
-			nbObjetsattribuer = 0;
-		}
+		// boucle objets il y a 3 joueurs
 	}
 
 	/**
@@ -104,7 +105,7 @@ public class ElementsPartie {
 
 
 	/**
-	 * A Faire (Quand Qui Statut)
+	 * A Faire (30/05/2021 EH Finalisée)
 	 * 
 	 * Méthode permettant de récupérer le plateau de pièces de la partie.
 	 * @return Le plateau de pièces.

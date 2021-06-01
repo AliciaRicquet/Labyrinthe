@@ -12,13 +12,13 @@ public class TestElementsPartie {
 
         Object parametres[];
             parametres=IG.saisirParametres(); // On ouvre la fenêtre de paramétrage pour la saisie
+            
             // Création de la fenêtre de jeu 
             int nbJoueurs=((Integer)parametres[0]).intValue(); // Récupération du nombre de joueurs
-            IG.creerFenetreJeu("- TestElementsPartie",nbJoueurs);
-            //creation et mise en place des pieces du plateau
+            IG.creerFenetreJeu("- TestElementsPartie",nbJoueurs);            //creation et mise en place des pieces du plateau
             Joueur joueurs[]=Joueur.nouveauxJoueurs(parametres);
             Objet[] tabObjet = Objet.nouveauxObjets();
-            ElementsPartie elementsPartie = new ElementsPartie(joueurs);
+            ElementsPartie elementsPartie=new ElementsPartie(joueurs);
             for (int i=0; i<7; i++){
                 for (int j=0; j<7; j++){
                     IG.changerPiecePlateau(i, j, elementsPartie.getPlateau().getPiece(i,j).getModelePiece(), elementsPartie.getPlateau().getPiece(i,j).getOrientationPiece());
@@ -48,18 +48,16 @@ public class TestElementsPartie {
                 IG.changerNomJoueur(i, nomJoueur+" ("+categorieJoueur+")");
                 IG.changerImageJoueur(i,numImageJoueur);
             }
-
             
             for (int i = 0; i<tabObjet.length; i++){
                 IG.placerObjetPlateau(tabObjet[i].getNumeroObjet(),tabObjet[i].getPosconnePlateau(), tabObjet[i].getPoslePlateau());
             }
-
-            for(int j= 0; j<(tabObjet.length/nbJoueurs); j++ ){
+            
+            for(int j= 0; j<tabObjet.length/nbJoueurs; j++){
                 IG.changerObjetJoueur(0,joueurs[0].getObjetsJoueur()[j].getNumeroObjet(), j);
                 IG.changerObjetJoueur(1,joueurs[1].getObjetsJoueur()[j].getNumeroObjet(), j);
                 IG.changerObjetJoueur(2,joueurs[2].getObjetsJoueur()[j].getNumeroObjet(), j);
             }
-
 
             IG.rendreVisibleFenetreJeu();  // On rend visible la fenêtre de jeu
 
