@@ -8,34 +8,37 @@ import joueurs.Joueur;
 
 /**
  * 
- * Cette classe permet de reprÃ©senter un ensemble d'Ã©lements composant une partie de jeu.
+ * Cette classe permet de représenter un ensemble d'élements composant une partie de jeu.
  * 
  */
 public class ElementsPartie {
 
 	private Joueur[] joueurs; 	// Les joueurs de la partie.
-	private Objet[] objets; 	// Les 18 objets de la partie dans l'ordre de leurs numÃ©ros.
-	private Plateau plateau; 	// Le plateau des piÃ¨ces.
-	private Piece pieceLibre; 	// La piÃ¨ce libre.
+	private Objet[] objets; 	// Les 18 objets de la partie dans l'ordre de leurs numéros.
+	private Plateau plateau; 	// Le plateau des pièces.
+	private Piece pieceLibre; 	// La pièce libre.
 	private int nombreJoueurs; 	// Le nombre de joueurs.
 
 	/**
 	 * 
-	 * A Faire (Quand Qui Statut)
+	 * A Faire (30/05/2021 EH Finalisée)
 	 *  
-	 * Constructeur permettant de gÃ©nÃ©rer et d'initialiser l'ensemble des Ã©lÃ©ments d'une partie (sauf les joueurs qui sont donnÃ©s en paramÃ¨tres).
+	 * Constructeur permettant de générer et d'initialiser l'ensemble des éléments d'une partie (sauf les joueurs qui sont donnés en paramètres).
 	 * 
-	 * Un plateau est crÃ©Ã© en placant 49 oiÃ¨ces de maniÃ¨re alÃ©atoire (utilisation de la mÃ©thode placerPiecesAleatoierment de la classe Plateau).
-	 * La piÃ¨ce restante (celle non prÃ©sente sur le plateau) est affectÃ©e Ã  la piÃ¨ce libre.
-	 * Les 18 objets sont crÃ©Ã©s avec des positions alÃ©atoires sur le plateau (utilisation de la mÃ©thode Objet.nouveauxObjets)
-	 * et distribuÃ©es aux diffÃ©rents joueurs (utilisation de la mÃ©thode attribuerObjetsAuxJoueurs).
+	 * Un plateau est créé en placant 49 pièces de manière aléatoire (utilisation de la méthode placerPiecesAleatoierment de la classe Plateau).
+	 * La pièce restante (celle non présente sur le plateau) est affectée à  la pièce libre.
+	 * Les 18 objets sont créés avec des positions aléatoires sur le plateau (utilisation de la méthode Objet.nouveauxObjets)
+	 * et distribuées aux différents joueurs (utilisation de la méthode attribuerObjetsAuxJoueurs).
 	 * 
-	 * @param joueurs Les joueurs de la partie. Les objets des joueurs ne sont pas encore attribuÃ©s (c'est au constructeur de le faire).
+	 * @param joueurs Les joueurs de la partie. Les objets des joueurs ne sont pas encore attribués (c'est au constructeur de le faire).
 	 */
 	public ElementsPartie(Joueur[] joueurs) {
-		
-		// A ComplÃ©ter
-		
+		this.joueurs=joueurs;
+		nombreJoueurs=joueurs.length;
+		plateau = new Plateau();
+        pieceLibre=plateau.placerPiecesAleatoierment();
+		objets = Objet.nouveauxObjets();
+		attribuerObjetsAuxJoueurs();
 	}
 
 	/**
@@ -44,7 +47,7 @@ public class ElementsPartie {
 	 * @param joueurs Les joueurs de la partie.
 	 * @param objets Les 18 objets de la partie.
 	 * @param plateau Le plateau de jeu.
-	 * @param pieceLibre La piÃ¨ce libre (la piÃ¨ce hors plateau).
+	 * @param pieceLibre La pièce libre (la pièce hors plateau).
 	 */
 	public ElementsPartie(Joueur[] joueurs,Objet[] objets,Plateau plateau,Piece pieceLibre) {
 		this.joueurs=joueurs;
@@ -55,87 +58,134 @@ public class ElementsPartie {
 	}
 
 	/**
-	 * A Faire (Quand Qui Statut)
+	 * A Faire (30/05/2021 EH Finalisée)
 	 * 
-	 * MÃ©thode permettant d'attribuer les objets aux diffÃ©rents joueurs de maniÃ¨re alÃ©atoire.
+	 * Méthode permettant d'attribuer les objets aux différents joueurs de manière aléatoire.
 	 */
 	private void attribuerObjetsAuxJoueurs(){
-	
-		// A ComplÃ©ter
-		
+		int nbObjets=18/nombreJoueurs; // objets par joueurs
+		int nbObjetsattribuer = 0; // objets attribuer aux joueurs
+		Objet[] objetJoueur = new Objet[nbObjets];
+		int tabal[] = Utils.genereTabIntAleatoirement(18);
+		// boucle objets il y a 2 joueurs
+			for (int k=0; k<nombreJoueurs; k++){
+				while (nbObjetsattribuer<nbObjets){
+					for (int i=0; i<nbObjets;i++){
+						objetJoueur[i]=objets[tabal[i+(k*nbObjets)]];
+					}
+					joueurs[k].setObjetsJoueur(objetJoueur);
+					nbObjetsattribuer++;
+				}
+				nbObjetsattribuer = 0;
+				objetJoueur = new Objet[nbObjets];
+			}
+		// boucle objets il y a 3 joueurs
 	}
 
 	/**
-	 * A Faire (Quand Qui Statut)
+	 * A Faire (30/05/2021 EH Finalisée)
 	 * 
-	 * MÃ©thode permettant de rÃ©cupÃ©rer les joueurs de la partie.
+	 * Méthode permettant de récupérer les joueurs de la partie.
 	 * @return Les joueurs de la partie.
 	 */
 	public Joueur[] getJoueurs() {
-		return null; // A Modifier
+		return joueurs;
 	}
 
 
 	/**
-	 * A Faire (Quand Qui Statut)
+	 * A Faire (30/05/2021 EH Finalisée)
 	 * 
-	 * MÃ©thode permettant de rÃ©cupÃ©rer les piÃ¨ces de la partie.
+	 * Méthode permettant de récupérer les pièces de la partie.
 	 * @return Les objets de la partie.
 	 */
 	public Objet[] getObjets() {
-		return null; // A Modifier
+		return objets;
 	}
 
 
 	/**
-	 * A Faire (Quand Qui Statut)
+	 * A Faire (30/05/2021 EH Finalisée)
 	 * 
-	 * MÃ©thode permettant de rÃ©cupÃ©rer le plateau de piÃ¨ces de la partie.
-	 * @return Le plateau de piÃ¨ces.
+	 * Méthode permettant de récupérer le plateau de pièces de la partie.
+	 * @return Le plateau de pièces.
 	 */
 	public Plateau getPlateau() {
-		return null; // A Modifier
+		return plateau;
 	}
 
 
 	/**
-	 * A Faire (Quand Qui Statut)
+	 * A Faire (30/05/2021 EH Finalisée)
 	 * 
-	 * MÃ©thode permettant de rÃ©cupÃ©rer la piÃ¨ce libre de la partie.
-	 * @return La piÃ¨ce libre.
+	 * Méthode permettant de récupérer la pièce libre de la partie.
+	 * @return La pièce libre.
 	 */
 	public Piece getPieceLibre() {
-		return null; // A Modifier
+		return pieceLibre; 
 	}
 
 
 	/**
-	 * A Faire (Quand Qui Statut)
+	 * A Faire (30/05/2021 EH Finalisée)
 	 * 
-	 * MÃ©thode permettant de rÃ©cupÃ©rer le nombre de joueurs de la partie.
+	 * Méthode permettant de récupérer le nombre de joueurs de la partie.
 	 * @return Le nombre de joueurs.
 	 */
 	public int getNombreJoueurs() {
-		return -1; // A Modifier
+		return nombreJoueurs; 
 	}
 
 
 	/**
-	 * A Faire (Quand Qui Statut)
+	 * A Faire (30/05/2021 EH Finalisée)
 	 * 
-	 * MÃ©thode modifiant les diffÃ©rents Ã©lÃ©ments de la partie suite Ã  l'insertion de la piÃ¨ce libre dans le plateau.
+	 * Méthode modifiant les différents éléments de la partie suite à  l'insertion de la pièce libre dans le plateau.
 	 * 
-	 * @param choixEntree L'entrÃ©e choisie pour rÃ©aliser l'insertion (un nombre entre 0 et 27).
+	 * @param choixEntree L'entrée choisie pour réaliser l'insertion (un nombre entre 0 et 27).
 	 */
 	public void insertionPieceLibre(int choixEntree){
-		// A ComplÃ©ter
+		// Piece hors plateau va en haut à la colone choixEntree
+		if (choixEntree<7){
+            Piece save = plateau.getPiece(6, choixEntree);
+            for (int i=6; i>=1; i--){
+                plateau.positionnePiece(plateau.getPiece(i-1, choixEntree), i, choixEntree);
+            }
+            plateau.positionnePiece(pieceLibre, 0, choixEntree);
+            pieceLibre= save;
+        // Piece hors plateau va à droite à la ligne choixEntree-7
+        }else if(choixEntree<14){
+            Piece save = plateau.getPiece(choixEntree-7, 0);
+            for (int i=0; i<6; i++){
+                plateau.positionnePiece(plateau.getPiece(choixEntree-7, i+1), choixEntree-7,i);
+            } 
+            plateau.positionnePiece(pieceLibre, choixEntree-7, 6);
+            pieceLibre= save;
+        // Piece hors plateau va en bas à la colone choixEntree-14
+        }else if (choixEntree<21){
+
+            Piece save = plateau.getPiece(0, 20-choixEntree);
+            for (int i=0; i<6; i++){
+                plateau.positionnePiece(plateau.getPiece(i+1, 20-choixEntree), i, 20-choixEntree);
+            } 
+            plateau.positionnePiece(pieceLibre, 6, 20-choixEntree);
+            pieceLibre= save;
+        // Piece hors plateau va à gauche à la ligne choixEntree-21
+        }else{
+            Piece save = plateau.getPiece(27-choixEntree, 6);
+            for (int i=6; i>=1; i--){
+                plateau.positionnePiece(plateau.getPiece(27-choixEntree, i-1), 27-choixEntree,i );
+            } 
+            plateau.positionnePiece(pieceLibre, 27-choixEntree, 0);
+            pieceLibre= save;
+        }
 	}
 
 
 	/**
-	 * MÃ©thode retournant une copie.
+	 * Méthode retournant une copie.
 	 * 
-	 * @return Une copie des Ã©lÃ©ments.
+	 * @return Une copie des éléments.
 	 */
 	public ElementsPartie copy(){
 		Objet[] nouveauxObjets=new Objet[(this.objets).length];
@@ -146,7 +196,7 @@ public class ElementsPartie {
 			nouveauxJoueurs[i]=(this.joueurs[i]).copy(objets);
 		Plateau nouveauPlateau=(this.plateau).copy();
 		Piece nouvellePieceLibre=(this.pieceLibre).copy();
-		ElementsPartie nouveauxElements=new  ElementsPartie(nouveauxJoueurs,nouveauxObjets,nouveauPlateau,nouvellePieceLibre); 
+		ElementsPartie nouveauxElements=new ElementsPartie(nouveauxJoueurs,nouveauxObjets,nouveauPlateau,nouvellePieceLibre); 
 		return nouveauxElements;
 	}
 
