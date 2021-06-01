@@ -67,13 +67,12 @@ public class ElementsPartie {
 		int nbObjetsattribuer = 0; // objets attribuer aux joueurs
 		Objet[] objetJoueur = new Objet[nbObjets];
 		int tabal[] = Utils.genereTabIntAleatoirement(18);
-		// boucle objets joueur 1 et 2
+		// boucle objets il y a 2 joueurs
 		if (nombreJoueurs==2){
 			for (int k=0; k<2; k++){
 				while (nbObjetsattribuer<nbObjets){
 					for (int i=0; i<nbObjets;i++){
 						objetJoueur[i]=objets[tabal[i]];
-						objets[tabal[i]]=null;
 					}
 					joueurs[k].setObjetsJoueur(objetJoueur);
 					nbObjetsattribuer++;
@@ -81,14 +80,12 @@ public class ElementsPartie {
 				nbObjetsattribuer = 0;
 			}
 		}
-		// objets joueur 3
+		// boucle objets il y a 3 joueurs
 		if(nombreJoueurs==3){
-			// objets joueur 3
 			for (int k=0; k<3; k++){
 				while (nbObjetsattribuer<nbObjets){
 					for (int i=0; i<nbObjets;i++){
 						objetJoueur[i]=objets[tabal[i]];
-						objets[tabal[i]]=null;
 					}
 					joueurs[k].setObjetsJoueur(objetJoueur);
 					nbObjetsattribuer++;
@@ -162,18 +159,18 @@ public class ElementsPartie {
 	 */
 	public void insertionPieceLibre(int choixEntree){
 		int cpt=0;
-			if (choixEntree == 21 || choixEntree == 14)
-				cpt=6;
-			if (choixEntree == 22 || choixEntree == 15)
-				cpt=5;
-			if (choixEntree==23 || choixEntree == 16)
-				cpt=4;
-			if (choixEntree==25 || choixEntree == 18)
-				cpt=-4;
-			if (choixEntree == 26 || choixEntree == 19)
-				cpt=-5;
-			if (choixEntree == 27 || choixEntree == 20)
-				cpt=-6;
+		if (choixEntree == 21 || choixEntree == 14)
+			cpt=6;
+		if (choixEntree == 22 || choixEntree == 15)
+			cpt=5;
+		if (choixEntree==23 || choixEntree == 16)
+			cpt=4;
+		if (choixEntree==25 || choixEntree == 18)
+			cpt=-4;
+		if (choixEntree == 26 || choixEntree == 19)
+			cpt=-5;
+		if (choixEntree == 27 || choixEntree == 20)
+			cpt=-6;
 		// Piece hors plateau va en haut à la colone choixEntree
 		if (choixEntree<7){
 			Piece save = plateau.getPiece(6, choixEntree);

@@ -15,7 +15,8 @@ public class TestElementsPartie {
             
             // Création de la fenêtre de jeu 
             int nbJoueurs=((Integer)parametres[0]).intValue(); // Récupération du nombre de joueurs
-            IG.creerFenetreJeu("- TestElementsPartie",nbJoueurs);            //creation et mise en place des pieces du plateau
+            IG.creerFenetreJeu("- TestElementsPartie",nbJoueurs);
+            //creation et mise en place des pieces du plateau
             Plateau plateau = new Plateau();
             Piece pieceHorsPlateau=plateau.placerPiecesAleatoierment();
             Joueur joueurs[]=Joueur.nouveauxJoueurs(parametres);
