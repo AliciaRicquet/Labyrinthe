@@ -70,7 +70,6 @@ public class TestElementsPartie {
             IG.afficherMessage(message); // On change de message de la fenêtre de jeu
             IG.miseAJourAffichage(); // On effectue le rafraichissement de la fenêtre de jeu
             IG.attendreClic();
-
             for(int numTest = 0; numTest <4; numTest++){
                 int choix = IG.attendreChoixEntree();
                 elementsPartie.insertionPieceLibre(choix);
@@ -84,7 +83,7 @@ public class TestElementsPartie {
                 
                 IG.miseAJourAffichage();
             }
-
+            
             String messageFin[]={
                 "",
                 "C'est terminer !",
