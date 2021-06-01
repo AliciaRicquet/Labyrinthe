@@ -12,7 +12,6 @@ public class TestElementsPartie {
 
         Object parametres[];
             parametres=IG.saisirParametres(); // On ouvre la fenêtre de paramétrage pour la saisie
-            
             // Création de la fenêtre de jeu 
             int nbJoueurs=((Integer)parametres[0]).intValue(); // Récupération du nombre de joueurs
             IG.creerFenetreJeu("- TestElementsPartie",nbJoueurs);

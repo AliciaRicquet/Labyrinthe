@@ -79,16 +79,6 @@ public class ElementsPartie {
 			objetJoueur = new Objet[nbObjets];
 			nbObjetsattribuer = 0;
 		}
-
-		for(int j= 0; j<(nbObjets); j++ ){
-			System.out.print("joueur 1" + ","+joueurs[0].getObjetsJoueur()[j].getNumeroObjet()+" ,,,,");
-		}
-		for(int j= 0; j<(nbObjets); j++ ){
-			System.out.print("joueur 2 " + ","+joueurs[1].getObjetsJoueur()[j].getNumeroObjet()+" ,,,,");
-		}
-		for(int j= 0; j<(nbObjets); j++ ){
-			System.out.print("joueur 3" + ","+joueurs[2].getObjetsJoueur()[j].getNumeroObjet()+" ,,,,");
-		}
 	}
 
 	/**
@@ -154,52 +144,38 @@ public class ElementsPartie {
 	 * @param choixEntree L'entrée choisie pour réaliser l'insertion (un nombre entre 0 et 27).
 	 */
 	public void insertionPieceLibre(int choixEntree){
-		int cpt=0;
-		if (choixEntree == 21 || choixEntree == 14)
-			cpt=6;
-		if (choixEntree == 22 || choixEntree == 15)
-			cpt=5;
-		if (choixEntree==23 || choixEntree == 16)
-			cpt=4;
-		if (choixEntree==25 || choixEntree == 18)
-			cpt=-4;
-		if (choixEntree == 26 || choixEntree == 19)
-			cpt=-5;
-		if (choixEntree == 27 || choixEntree == 20)
-			cpt=-6;
 		// Piece hors plateau va en haut à la colone choixEntree
 		if (choixEntree<7){
             Piece save = plateau.getPiece(6, choixEntree);
-            for (int i=1; i<6; i++){
-                plateau.positionnePiece(plateau.getPiece(i, choixEntree), i+1, choixEntree);
+            for (int i=6; i>=1; i--){
+                plateau.positionnePiece(plateau.getPiece(i-1, choixEntree), i, choixEntree);
             }
             plateau.positionnePiece(pieceLibre, 0, choixEntree);
             pieceLibre= save;
         // Piece hors plateau va à droite à la ligne choixEntree-7
         }else if(choixEntree<14){
             Piece save = plateau.getPiece(choixEntree-7, 0);
-            for (int i=6; i>0; i--){
-                plateau.positionnePiece(plateau.getPiece(choixEntree-7, i), choixEntree-7,i-1 );
+            for (int i=0; i<6; i++){
+                plateau.positionnePiece(plateau.getPiece(choixEntree-7, i+1), choixEntree-7,i);
             } 
-            plateau.positionnePiece(pieceLibre, choixEntree-7, 0);
+            plateau.positionnePiece(pieceLibre, choixEntree-7, 6);
             pieceLibre= save;
         // Piece hors plateau va en bas à la colone choixEntree-14
         }else if (choixEntree<21){
 
-            Piece save = plateau.getPiece(6, choixEntree-14+cpt);
-            for (int i=6; i>0; i--){
-                plateau.positionnePiece(plateau.getPiece(i, choixEntree-14+cpt), i-1, choixEntree-14+cpt);
+            Piece save = plateau.getPiece(0, 20-choixEntree);
+            for (int i=0; i<6; i++){
+                plateau.positionnePiece(plateau.getPiece(i+1, 20-choixEntree), i, 20-choixEntree);
             } 
-            plateau.positionnePiece(pieceLibre, 0, choixEntree-14+cpt);
+            plateau.positionnePiece(pieceLibre, 6, 20-choixEntree);
             pieceLibre= save;
         // Piece hors plateau va à gauche à la ligne choixEntree-21
         }else{
-
-            Piece save = plateau.getPiece(choixEntree-21+cpt, 0);
-            for (int i=1; i<6; i++){
-                plateau.positionnePiece(plateau.getPiece(choixEntree-21+cpt, i), choixEntree-21+cpt,i+1 );
+            Piece save = plateau.getPiece(27-choixEntree, 6);
+            for (int i=6; i>=1; i--){
+                plateau.positionnePiece(plateau.getPiece(27-choixEntree, i-1), 27-choixEntree,i );
             } 
-            plateau.positionnePiece(pieceLibre, choixEntree-21+cpt, 0);
+            plateau.positionnePiece(pieceLibre, 27-choixEntree, 0);
             pieceLibre= save;
         }
 	}
