@@ -72,17 +72,27 @@ public class TestElementsPartie {
             IG.afficherMessage(message); // On change de message de la fenêtre de jeu
             IG.miseAJourAffichage(); // On effectue le rafraichissement de la fenêtre de jeu
             IG.attendreClic();
+            for(int numTest = 0; numTest <4; numTest++){
+                int choix = IG.attendreChoixEntree();
+                elementsPartie.insertionPieceLibre(choix);
 
-            int choix = IG.attendreChoixEntree();
-            elementsPartie.insertionPieceLibre(choix);
-
-            for (int i=0; i<7; i++){
-                for (int j=0; j<7; j++){
-                    IG.changerPiecePlateau(i, j, elementsPartie.getPlateau().getPiece(i,j).getModelePiece(), elementsPartie.getPlateau().getPiece(i,j).getOrientationPiece());
+                for (int i=0; i<7; i++){
+                    for (int j=0; j<7; j++){
+                        IG.changerPiecePlateau(i, j, elementsPartie.getPlateau().getPiece(i,j).getModelePiece(), elementsPartie.getPlateau().getPiece(i,j).getOrientationPiece());
+                    }
                 }
+                IG.changerPieceHorsPlateau(elementsPartie.getPieceLibre().getModelePiece(), elementsPartie.getPieceLibre().getOrientationPiece());
+                
+                IG.miseAJourAffichage();
             }
-            IG.changerPieceHorsPlateau(elementsPartie.getPieceLibre().getModelePiece(), elementsPartie.getPieceLibre().getOrientationPiece());
             
+            String messageFin[]={
+                "",
+                "C'est terminer !",
+                "Cliquer pour quitter ...",
+                ""
+            };
+            IG.afficherMessage(messageFin);
             IG.miseAJourAffichage();
 
             IG.attendreClic();
