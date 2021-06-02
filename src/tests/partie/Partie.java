@@ -10,11 +10,6 @@ import joueurs.JoueurOrdinateur;
 public class Partie {
 	static double version=0.0;
 
-		for(int j= 0; j<(tabObjet.length/nbJoueurs); j++ ){
-			IG.changerObjetJoueur(0,joueurs[0].getObjetsJoueur()[j].getNumeroObjet(), j);
-			IG.changerObjetJoueur(1,joueurs[1].getObjetsJoueur()[j].getNumeroObjet(), j);
-			IG.changerObjetJoueur(2,joueurs[2].getObjetsJoueur()[j].getNumeroObjet(), j);
-		}
 
 	private ElementsPartie elementsPartie; // Les éléments de la partie.
 
