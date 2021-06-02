@@ -112,7 +112,7 @@ public class Partie {
 
 	/**
 	 * 
-	 * A Faire (02/06/2021 SA/IB/AR EnCours)
+	 * A Faire (02/06/2021 SA/IB/AR/EH EnCours)
 	 * 
 	 * Méthode permettant de lancer une partie.
 	 */
