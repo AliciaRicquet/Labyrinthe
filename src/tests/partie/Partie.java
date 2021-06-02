@@ -163,7 +163,9 @@ public class Partie {
 					}
 				}
 				for (int i = 0; i<tabObjet.length; i++){
-					IG.placerObjetPlateau(tabObjet[i].getNumeroObjet(),tabObjet[i].getPoslePlateau(), tabObjet[i].getPosconnePlateau());
+					if (tabObjet[i].surPlateau()){
+						IG.placerObjetPlateau(tabObjet[i].getNumeroObjet(),tabObjet[i].getPoslePlateau(), tabObjet[i].getPosconnePlateau());
+					}
 				}
 				IG.miseAJourAffichage();
 				
