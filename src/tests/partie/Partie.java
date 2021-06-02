@@ -10,6 +10,11 @@ import joueurs.JoueurOrdinateur;
 public class Partie {
 	static double version=0.0;
 
+		for(int j= 0; j<(tabObjet.length/nbJoueurs); j++ ){
+			IG.changerObjetJoueur(0,joueurs[0].getObjetsJoueur()[j].getNumeroObjet(), j);
+			IG.changerObjetJoueur(1,joueurs[1].getObjetsJoueur()[j].getNumeroObjet(), j);
+			IG.changerObjetJoueur(2,joueurs[2].getObjetsJoueur()[j].getNumeroObjet(), j);
+		}
 
 	private ElementsPartie elementsPartie; // Les éléments de la partie.
 
@@ -36,7 +41,6 @@ public class Partie {
 		// creation et placement des joueurs
 		int nbJoueurs = elementsPartie.getNombreJoueurs();
 		Joueur[] joueurs = elementsPartie.getJoueurs();
-		
 		if (nbJoueurs==2){
 			joueurs[0].setPosition(0, 0);
 			IG.placerJoueurSurPlateau(0, 0, 0);
@@ -62,7 +66,7 @@ public class Partie {
 		Objet[] tabObjet = elementsPartie.getObjets();
 		
 		for (int i = 0; i<tabObjet.length; i++){
-			IG.placerObjetPlateau(tabObjet[i].getNumeroObjet(),tabObjet[i].getPoslePlateau(), tabObjet[i].getPosconnePlateau());
+			IG.placerObjetPlateau(tabObjet[i].getNumeroObjet(),tabObjet[i].getPosconnePlateau(), tabObjet[i].getPoslePlateau());
 		}
 
 		for(int j= 0; j<(tabObjet.length/nbJoueurs); j++ ){
@@ -92,17 +96,12 @@ public class Partie {
 
 	/**
 	 * 
-	 * A Faire (02/06/2021 SA/IB/AR EnCours)
+	 * A Faire (Quand Qui Statut)
 	 * 
 	 * Méthode permettant de lancer une partie.
 	 */
 	public void lancer(){
-		int nbJoueurs = elementsPartie.getNombreJoueurs();
-		Joueur[] joueurs = elementsPartie.getJoueurs();
-		Objet[] tabObjet = elementsPartie.getObjets();
-		while (joueurs[0].getNombreObjetsRecuperes()!= tabObjet.length/nbJoueurs && joueurs[1].getNombreObjetsRecuperes()!= tabObjet.length/nbJoueurs && joueurs[2].getNombreObjetsRecuperes()!= tabObjet.length/nbJoueurs){
-			
-		}
+		// A Compléter
 	}
 
 	/**
