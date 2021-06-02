@@ -36,6 +36,7 @@ public class Partie {
 		// creation et placement des joueurs
 		int nbJoueurs = elementsPartie.getNombreJoueurs();
 		Joueur[] joueurs = elementsPartie.getJoueurs();
+		
 		if (nbJoueurs==2){
 			joueurs[0].setPosition(0, 0);
 			IG.placerJoueurSurPlateau(0, 0, 0);
@@ -61,7 +62,7 @@ public class Partie {
 		Objet[] tabObjet = elementsPartie.getObjets();
 		
 		for (int i = 0; i<tabObjet.length; i++){
-			IG.placerObjetPlateau(tabObjet[i].getNumeroObjet(),tabObjet[i].getPosconnePlateau(), tabObjet[i].getPoslePlateau());
+			IG.placerObjetPlateau(tabObjet[i].getNumeroObjet(),tabObjet[i].getPoslePlateau(), tabObjet[i].getPosconnePlateau());
 		}
 
 		for(int j= 0; j<(tabObjet.length/nbJoueurs); j++ ){
@@ -91,12 +92,17 @@ public class Partie {
 
 	/**
 	 * 
-	 * A Faire (Quand Qui Statut)
+	 * A Faire (02/06/2021 SA/IB/AR EnCours)
 	 * 
 	 * Méthode permettant de lancer une partie.
 	 */
 	public void lancer(){
-		// A Compléter
+		int nbJoueurs = elementsPartie.getNombreJoueurs();
+		Joueur[] joueurs = elementsPartie.getJoueurs();
+		Objet[] tabObjet = elementsPartie.getObjets();
+		while (joueurs[0].getNombreObjetsRecuperes()!= tabObjet.length/nbJoueurs && joueurs[1].getNombreObjetsRecuperes()!= tabObjet.length/nbJoueurs && joueurs[2].getNombreObjetsRecuperes()!= tabObjet.length/nbJoueurs){
+			
+		}
 	}
 
 	/**
