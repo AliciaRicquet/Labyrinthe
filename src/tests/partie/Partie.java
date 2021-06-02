@@ -101,7 +101,7 @@ public class Partie {
 		Objet[] tabObjet = elementsPartie.getObjets();
 		Plateau plateau = elementsPartie.getPlateau();
 		boolean gagnant = false;
-		while (gagnant = false){
+		while (gagnant == false){
 			for(int numJoueurs = 0; numJoueurs < nbJoueurs; numJoueurs ++){
 				String messageJoueur[]={
 				"",
@@ -180,13 +180,13 @@ public class Partie {
 					}
 				}
 
-			if(joueurs[numJoueurs].getPosLigne() == joueurs[numJoueurs].getObjetsJoueur()[joueurs[numJoueurs].getNombreObjetsRecuperes()].getPoslePlateau() && joueurs[numJoueurs].getPosColonne() == joueurs[numJoueurs].getObjetsJoueur()[joueurs[0].getNombreObjetsRecuperes()].getPosconnePlateau()){
-				joueurs[numJoueurs].recupererObjet();
-			}
+				if(joueurs[numJoueurs].getPosLigne() == joueurs[numJoueurs].getObjetsJoueur()[joueurs[numJoueurs].getNombreObjetsRecuperes()].getPoslePlateau() && joueurs[numJoueurs].getPosColonne() == joueurs[numJoueurs].getObjetsJoueur()[joueurs[0].getNombreObjetsRecuperes()].getPosconnePlateau()){
+					joueurs[numJoueurs].recupererObjet();
+				}
 
-			if(joueurs[numJoueurs].getNombreObjetsRecuperes() == joueurs[numJoueurs].getObjetsJoueur().length){
-				gagnant = true;
-			}
+				if(joueurs[numJoueurs].getNombreObjetsRecuperes() == joueurs[numJoueurs].getObjetsJoueur().length){
+					gagnant = true;
+				}
 			}
 		}
 			
