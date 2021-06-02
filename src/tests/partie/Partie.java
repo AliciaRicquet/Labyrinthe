@@ -187,24 +187,26 @@ public class Partie {
 				};
 				IG.afficherMessage(messageDeplacement);
 				IG.miseAJourAffichage();
-
+				int[][] resultat;
+				int[][] resultatPrecis;
 				if(joueurs[numJoueurs].getCategorie()=="ordinateur"){
 					IG.placerBilleSurPlateau(joueurs[numJoueurs].getPosLigne(), joueurs[numJoueurs].getPosColonne(), 1, 1, 0);
 				}else{
 					int[] casArr = new int[2];
 					casArr = joueurs[numJoueurs].choisirCaseArrivee(null);
 	
-					int[][] resultat = plateau.calculeChemin(joueurs[numJoueurs].getPosLigne(), joueurs[numJoueurs].getPosColonne(), casArr[0], casArr[1]);
+					resultat = plateau.calculeChemin(joueurs[numJoueurs].getPosLigne(), joueurs[numJoueurs].getPosColonne(), casArr[0], casArr[1]);
 					while(resultat==null){
 						casArr = joueurs[numJoueurs].choisirCaseArrivee(null);
 						resultat = plateau.calculeChemin(joueurs[numJoueurs].getPosLigne(), joueurs[numJoueurs].getPosColonne(), casArr[0], casArr[1]);
 					}
+					resultatPrecis = plateau.calculeCheminDetaille(resultat, numJoueurs);
 					for (int x=0;x<7;x++){
 						for (int j=0;j<7;j++){
 							if (resultat!=null){
 								IG.placerJoueurSurPlateau(joueurs[numJoueurs].getNumJoueur(), resultat[resultat.length-1][0], resultat[resultat.length-1][1]);
-								for (int k=0; k<resultat.length;k++){
-									IG.placerBilleSurPlateau(resultat[k][0], resultat[k][1], 1, 1, numJoueurs);
+								for(int n = 0; n < resultatPrecis.length; n++) {
+									IG.placerBilleSurPlateau(resultatPrecis[n][0], resultatPrecis[n][1], resultatPrecis[n][2], resultatPrecis[n][3], numJoueurs);
 								}
 							}
 						}
@@ -212,13 +214,17 @@ public class Partie {
 					joueurs[numJoueurs].setPosition(resultat[resultat.length-1][0], resultat[resultat.length-1][1]);
 				}
 				IG.miseAJourAffichage();
-				IG.pause(1500);
-				for(int i=0;i<7;i++){
+				// supprimer toutes les billes du plateau
+				for(int i=0;i<7;i++) {
 					for (int j=0; j<7;j++){
-						IG.supprimerBilleSurPlateau(i, j, 1, 1);
+						for (int k=0; k<3;k++){
+							for (int l=0;l<3;l++){
+								IG.supprimerBilleSurPlateau(i, j, k, l);
+							}
+						}
+						IG.miseAJourAffichage();
 					}
 				}
-				IG.miseAJourAffichage();
 
 				if(joueurs[numJoueurs].getPosLigne() == joueurs[numJoueurs].getObjetsJoueur()[joueurs[numJoueurs].getNombreObjetsRecuperes()].getPoslePlateau() && joueurs[numJoueurs].getPosColonne() == joueurs[numJoueurs].getObjetsJoueur()[joueurs[0].getNombreObjetsRecuperes()].getPosconnePlateau()){
 					joueurs[numJoueurs].getObjetsJoueur()[joueurs[numJoueurs].getNombreObjetsRecuperes()].enleveDuPlateau();
