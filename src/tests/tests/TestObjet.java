@@ -1,8 +1,9 @@
+
 package tests;
 import composants.Objet;
 import grafix.interfaceGraphique.IG;
 
-public class TestObjets {
+public class TestObjet {
     public static void main(String[] args){
         Objet[] tab = Objet.nouveauxObjets(); 
         // Une petite démonstration conernant l'interface graphique
@@ -13,7 +14,7 @@ public class TestObjets {
 		
 		// Création de la fenêtre de jeu et affichage de la fenêtre 
 		int nbJoueurs=((Integer)parametres[0]).intValue(); // Récupération du nombre de joueurs
-		IG.creerFenetreJeu("Démo Librairie IG version 1.9",nbJoueurs); // On crée la fenêtre
+		IG.creerFenetreJeu("Test Objet",nbJoueurs); // On crée la fenêtre
 		IG.rendreVisibleFenetreJeu();  // On rend visible la fenêtre de jeu
 
         		// Affichage d'un message
@@ -33,6 +34,7 @@ public class TestObjets {
 		IG.attendreClic();
 		IG.fermerFenetreJeu();
 		System.exit(0);
+
     }
 }
 

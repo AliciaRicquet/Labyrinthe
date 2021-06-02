@@ -2,7 +2,7 @@
     "java.project.referencedLibraries": [
         "lib/**/*.jar",
         "src/libIG19.jar",
-        "libIG19.jar"
+        "libIG24.jar"
     ],
     "java.project.sourcePaths": [
         "src/tests",
