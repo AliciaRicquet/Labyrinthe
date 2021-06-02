@@ -89,40 +89,6 @@ public class Partie {
 		elementsPartie=new ElementsPartie(joueurs);
 	}
 
-		// On affiche l'ensemble des éléments
-		
-        //creation et mise en place des pieces du plateau
-		for (int i=0; i<7; i++){
-			for (int j=0; j<7; j++){
-				IG.changerPiecePlateau(i, j, elementsPartie.getPlateau().getPiece(i,j).getModelePiece(), elementsPartie.getPlateau().getPiece(i,j).getOrientationPiece());
-			}
-		}
-		IG.changerPieceHorsPlateau(elementsPartie.getPieceLibre().getModelePiece(), elementsPartie.getPieceLibre().getOrientationPiece());
-		
-		// creation et placement des joueurs
-		int nbJoueurs = elementsPartie.getNombreJoueurs();
-		Joueur[] joueurs = elementsPartie.getJoueurs();
-		if (nbJoueurs==2){
-			joueurs[0].setPosition(0, 0);
-			IG.placerJoueurSurPlateau(0, 0, 0);
-			joueurs[1].setPosition(0, 6);
-			IG.placerJoueurSurPlateau(1, 0, 6);
-		}else{
-			joueurs[0].setPosition(0, 0);
-			IG.placerJoueurSurPlateau(0, 0, 0);
-			joueurs[1].setPosition(0, 6);
-			IG.placerJoueurSurPlateau(1, 0, 6);
-			joueurs[2].setPosition(6, 6);
-			IG.placerJoueurSurPlateau(2, 6, 6);
-		}
-		// mise en place des image/nom/categorie des joueurs
-		for (int i=0; i<nbJoueurs;i++){
-			int numImageJoueur=(joueurs[i].getNumeroImagePersonnage());
-			String nomJoueur=(joueurs[i].getNomJoueur());
-			String categorieJoueur=(joueurs[i].getCategorie());
-			IG.changerNomJoueur(i, nomJoueur+" ("+categorieJoueur+")");
-			IG.changerImageJoueur(i,numImageJoueur);
-		}
 
 	/**
 	 * 
