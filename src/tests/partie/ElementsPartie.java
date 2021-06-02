@@ -237,13 +237,11 @@ public class ElementsPartie {
 			}
 			// modification de la position des Objets
 			for (int numObjet = 0; numObjet<objets.length;numObjet++){
-				System.out.println(objets[numObjet]);
 				if (objets[numObjet].getPoslePlateau()==27-choixEntree && objets[numObjet].getPosconnePlateau()==6){
 					objets[numObjet].positionneObjet(objets[numObjet].getPoslePlateau(), 0);
 				}else if (objets[numObjet].getPoslePlateau()==27-choixEntree){
 					objets[numObjet].positionneObjet(27-choixEntree, objets[numObjet].getPosconnePlateau()+1);
 				}
-				System.out.println(objets[numObjet]);
 			}
         }
 	}
