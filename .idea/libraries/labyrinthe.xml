@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="labyrinthe">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/libIG24.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libIG19.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
