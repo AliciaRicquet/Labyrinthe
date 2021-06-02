@@ -245,6 +245,7 @@ public class Partie {
 		for (int numJoueurs=0; numJoueurs<nbJoueurs;numJoueurs++){
 			if(joueurs[numJoueurs].getNombreObjetsRecuperes() == joueurs[numJoueurs].getObjetsJoueur().length){
 				IG.afficherGagnant(numJoueurs);
+				IG.miseAJourAffichage();
 			}
 		}
 	}
