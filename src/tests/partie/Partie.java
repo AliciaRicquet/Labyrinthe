@@ -122,7 +122,7 @@ public class Partie {
 		Objet[] tabObjet = elementsPartie.getObjets();
 		Plateau plateau = elementsPartie.getPlateau();
 		boolean gagnant = false;
-
+		int numGagnant=0;
 		while (gagnant == false){
 			for(int numJoueurs = 0; numJoueurs < nbJoueurs; numJoueurs ++){
 				String messageJoueur[]={
@@ -179,7 +179,6 @@ public class Partie {
 					IG.placerJoueurSurPlateau(i, joueurs[i].getPosLigne(), joueurs[i].getPosColonne());
 					
 				}
-
 				IG.miseAJourAffichage();
 
 				String messageDeplacement[]={
@@ -189,13 +188,14 @@ public class Partie {
 				};
 				IG.afficherMessage(messageDeplacement);
 				IG.miseAJourAffichage();
-				int[][] resultat;
-				int[][] resultatPrecis;
+				int[][] resultat=null;
+				int[][] resultatPrecis=null;
 				if(joueurs[numJoueurs].getCategorie()=="ordinateur"){
 					IG.placerBilleSurPlateau(joueurs[numJoueurs].getPosLigne(), joueurs[numJoueurs].getPosColonne(), 1, 1, 0);
 				}else{
 					int[] casArr = new int[2];
 					casArr = joueurs[numJoueurs].choisirCaseArrivee(null);
+					IG.deselectionnerFleche();
 	
 					resultat = plateau.calculeChemin(joueurs[numJoueurs].getPosLigne(), joueurs[numJoueurs].getPosColonne(), casArr[0], casArr[1]);
 					while(resultat==null){
@@ -215,18 +215,14 @@ public class Partie {
 					}
 					joueurs[numJoueurs].setPosition(resultat[resultat.length-1][0], resultat[resultat.length-1][1]);
 				}
+				IG.deselectionnerPiecePlateau();
 				IG.miseAJourAffichage();
 				// supprimer toutes les billes du plateau
-				for(int i=0;i<7;i++) {
-					for (int j=0; j<7;j++){
-						for (int k=0; k<3;k++){
-							for (int l=0;l<3;l++){
-								IG.supprimerBilleSurPlateau(i, j, k, l);
-							}
-						}
-						IG.miseAJourAffichage();
-					}
+				for(int x=0;x<resultatPrecis.length;x++) {
+					IG.supprimerBilleSurPlateau(resultatPrecis[x][0], resultatPrecis[x][1], resultatPrecis[x][2], resultatPrecis[x][3]);
+					IG.miseAJourAffichage();
 				}
+				
 
 				if(joueurs[numJoueurs].getPosLigne() == joueurs[numJoueurs].getObjetsJoueur()[joueurs[numJoueurs].getNombreObjetsRecuperes()].getPoslePlateau() && joueurs[numJoueurs].getPosColonne() == joueurs[numJoueurs].getObjetsJoueur()[joueurs[0].getNombreObjetsRecuperes()].getPosconnePlateau()){
 					joueurs[numJoueurs].getObjetsJoueur()[joueurs[numJoueurs].getNombreObjetsRecuperes()].enleveDuPlateau();
@@ -253,9 +249,24 @@ public class Partie {
 		for (int numJoueurs=0; numJoueurs<nbJoueurs;numJoueurs++){
 			if(joueurs[numJoueurs].getNombreObjetsRecuperes() == joueurs[numJoueurs].getObjetsJoueur().length){
 				IG.afficherGagnant(numJoueurs);
+				numGagnant=numJoueurs;
 				IG.miseAJourAffichage();
 			}
 		}
+
+		String messageFin[]={
+			"",
+			"C'est terminé !"+
+			joueurs[numGagnant].getNomJoueur() + "à Gagné",
+			"Cliquer pour quitter ...",
+			""
+		};
+		IG.afficherMessage(messageFin);
+		IG.miseAJourAffichage();
+
+		IG.attendreClic();
+		IG.fermerFenetreJeu();
+		System.exit(0);
 	}
 
 
