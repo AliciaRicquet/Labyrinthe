@@ -112,4 +112,8 @@ public class Partie {
 		}
 	}
 
+            IG.attendreClic();
+            IG.fermerFenetreJeu();
+            System.exit(0);
+    }
 }
