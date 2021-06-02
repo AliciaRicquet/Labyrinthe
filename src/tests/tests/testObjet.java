@@ -28,7 +28,7 @@ public class testObjet {
 		IG.attendreClic();
 
         for (int i = 0; i<tab.length; i++){
-            IG.placerObjetPlateau(tab[i].getNumeroObjet(),tab[i].getPosconnePlateau(), tab[i].getPoslePlateau());
+            IG.placerObjetPlateau(tab[i].getNumeroObjet(),tab[i].getPoslePlateau(), tab[i].getPosconnePlateau());
         }
         IG.miseAJourAffichage();
 		IG.attendreClic();
