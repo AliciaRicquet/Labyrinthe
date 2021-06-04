@@ -1,7 +1,6 @@
 package partie;
 
 import composants.Objet;
-import composants.Piece;
 import composants.Plateau;
 import grafix.interfaceGraphique.IG;
 import joueurs.Joueur;
@@ -112,7 +111,7 @@ public class Partie {
 
 	/**
 	 * 
-	 * A Faire (02/06/2021 SA/IB/AR/EH EnCours)
+	 * A Faire (02/06/2021 SA/IB/AR/EH Finalisée)
 	 * 
 	 * Méthode permettant de lancer une partie.
 	 */
@@ -224,10 +223,10 @@ public class Partie {
 				}
 				
 
-				if(joueurs[numJoueurs].getPosLigne() == joueurs[numJoueurs].getObjetsJoueur()[joueurs[numJoueurs].getNombreObjetsRecuperes()].getPoslePlateau() && joueurs[numJoueurs].getPosColonne() == joueurs[numJoueurs].getObjetsJoueur()[joueurs[0].getNombreObjetsRecuperes()].getPosconnePlateau()){
-					joueurs[numJoueurs].getObjetsJoueur()[joueurs[numJoueurs].getNombreObjetsRecuperes()].enleveDuPlateau();
+				if(joueurs[numJoueurs].getPosLigne() == joueurs[numJoueurs].getProchainObjet().getPoslePlateau() && joueurs[numJoueurs].getPosColonne() == joueurs[numJoueurs].getProchainObjet().getPosconnePlateau()){
+					joueurs[numJoueurs].getProchainObjet().enleveDuPlateau();
 					IG.enleverObjetPlateau(joueurs[numJoueurs].getPosLigne(), joueurs[numJoueurs].getPosColonne());
-					IG.changerObjetJoueurAvecTransparence(numJoueurs, joueurs[numJoueurs].getObjetsJoueur()[joueurs[numJoueurs].getNombreObjetsRecuperes()].getNumeroObjet(),joueurs[numJoueurs].getNombreObjetsRecuperes());
+					IG.changerObjetJoueurAvecTransparence(numJoueurs, joueurs[numJoueurs].getProchainObjet().getNumeroObjet(),joueurs[numJoueurs].getNombreObjetsRecuperes());
 					joueurs[numJoueurs].recupererObjet();
 				}
 
@@ -256,7 +255,7 @@ public class Partie {
 
 		String messageFin[]={
 			"",
-			"C'est terminé !"+
+			"C'est terminé! Bravo !! ",
 			joueurs[numGagnant].getNomJoueur() + "à Gagné",
 			"Cliquer pour quitter ...",
 			""
