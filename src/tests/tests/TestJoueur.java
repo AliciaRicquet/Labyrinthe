@@ -89,7 +89,6 @@ public class TestJoueur {
                             for (int k=0; k<resultat.length;k++){
                                 IG.placerBilleSurPlateau(resultat[k][0], resultat[k][1], 1, 1, i);
                             }
-                            break;
                         }
                     }
                 }
