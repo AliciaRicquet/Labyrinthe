@@ -4,7 +4,6 @@ package joueurs;
 import grafix.interfaceGraphique.IG;
 import composants.Objet;
 import composants.Plateau;
-import composants.Utils;
 import partie.ElementsPartie;
 
 /**
