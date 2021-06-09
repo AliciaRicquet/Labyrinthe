@@ -39,7 +39,25 @@ public class JoueurOrdinateurT2 extends JoueurOrdinateur {
 	public int[] choisirOrientationEntree(ElementsPartie elementsPartie) {
 		int resultat[]=new int[2];
 		for (int fleche=0;fleche<=27;fleche++ ){ // teste les 27 entrees du plateau
-			int o=Utils.genererEntier(3);
+			int o = Utils.genererEntier(3);
+			// copie des elements de la partie pour simuler une insertion
+			ElementsPartie copyElementsPartie = elementsPartie.copy();
+			copyElementsPartie.getPieceLibre().setOrientation(o);
+			copyElementsPartie.insertionPieceLibre(o);
+			//emplacement objet à récupérér
+			int[][] testInsertion0 = copyElementsPartie.getPlateau().calculeChemin(copyElementsPartie.getJoueurs()[getNumJoueur()].getPosLigne(), 
+														copyElementsPartie.getJoueurs()[getNumJoueur()].getPosColonne(), 
+														copyElementsPartie.getJoueurs()[getNumJoueur()].getProchainObjet().getPoslePlateau(), 
+														copyElementsPartie.getJoueurs()[getNumJoueur()].getProchainObjet().getPosconnePlateau());
+			copyElementsPartie.getJoueurs()[getNumJoueur()].setPosition(copyElementsPartie.getJoueurs()[getNumJoueur()].getProchainObjet().getPoslePlateau(), copyElementsPartie.getJoueurs()[getNumJoueur()].getProchainObjet().getPosconnePlateau());
+			if (testInsertion0!=null){
+				resultat[1]=fleche;
+				resultat[0]=o;
+				return resultat;
+			}
+		}
+		for (int fleche=0;fleche<=27;fleche++ ){ // teste les 27 entrees du plateau
+			int o = Utils.genererEntier(3);
 			// copie des elements de la partie pour simuler une insertion
 			ElementsPartie copyElementsPartie = elementsPartie.copy();
 			copyElementsPartie.getPieceLibre().setOrientation(o);
@@ -48,19 +66,12 @@ public class JoueurOrdinateurT2 extends JoueurOrdinateur {
 			int[][] testInsertion2=null;
 			int[][] testInsertion3=null;
 			int[][] testInsertion4=null;
-			//emplacement objet à récupérér
-			int[][] testInsertion0 = copyElementsPartie.getPlateau().calculeChemin(copyElementsPartie.getJoueurs()[getNumJoueur()].getPosLigne(), 
-														copyElementsPartie.getJoueurs()[getNumJoueur()].getPosColonne(), 
-														copyElementsPartie.getJoueurs()[getNumJoueur()].getProchainObjet().getPoslePlateau(), 
-														copyElementsPartie.getJoueurs()[getNumJoueur()].getProchainObjet().getPosconnePlateau());
-			copyElementsPartie.getJoueurs()[getNumJoueur()].setPosition(copyElementsPartie.getJoueurs()[getNumJoueur()].getProchainObjet().getPoslePlateau(), copyElementsPartie.getJoueurs()[getNumJoueur()].getProchainObjet().getPosconnePlateau());
 			//même colonne 1 ligne au dessus
-				
 			if (copyElementsPartie.getJoueurs()[getNumJoueur()].getProchainObjet().getPoslePlateau()>0 && copyElementsPartie.getJoueurs()[getNumJoueur()].getPosColonne()!=copyElementsPartie.getJoueurs()[getNumJoueur()].getProchainObjet().getPosconnePlateau()){
 				testInsertion1 = copyElementsPartie.getPlateau().calculeChemin(copyElementsPartie.getJoueurs()[getNumJoueur()].getPosLigne(), 
-														copyElementsPartie.getJoueurs()[getNumJoueur()].getPosColonne(), 
-														copyElementsPartie.getJoueurs()[getNumJoueur()].getProchainObjet().getPoslePlateau()-1, 
-														copyElementsPartie.getJoueurs()[getNumJoueur()].getProchainObjet().getPosconnePlateau());
+													copyElementsPartie.getJoueurs()[getNumJoueur()].getPosColonne(), 
+													copyElementsPartie.getJoueurs()[getNumJoueur()].getProchainObjet().getPoslePlateau()-1, 
+													copyElementsPartie.getJoueurs()[getNumJoueur()].getProchainObjet().getPosconnePlateau());
 				copyElementsPartie.getJoueurs()[getNumJoueur()].setPosition(copyElementsPartie.getJoueurs()[getNumJoueur()].getProchainObjet().getPoslePlateau()-1, copyElementsPartie.getJoueurs()[getNumJoueur()].getProchainObjet().getPosconnePlateau());						
 			}
 			//même colonne 1 ligne en dessous
@@ -72,7 +83,7 @@ public class JoueurOrdinateurT2 extends JoueurOrdinateur {
 				copyElementsPartie.getJoueurs()[getNumJoueur()].setPosition(copyElementsPartie.getJoueurs()[getNumJoueur()].getProchainObjet().getPoslePlateau()+1, copyElementsPartie.getJoueurs()[getNumJoueur()].getProchainObjet().getPosconnePlateau());
 			}
 			//même ligne 1 colonne à gauche
-			if(copyElementsPartie.getJoueurs()[getNumJoueur()].getProchainObjet().getPoslePlateau()>0 && copyElementsPartie.getJoueurs()[getNumJoueur()].getPosLigne()!=copyElementsPartie.getJoueurs()[getNumJoueur()].getProchainObjet().getPoslePlateau()){
+			if(copyElementsPartie.getJoueurs()[getNumJoueur()].getProchainObjet().getPosconnePlateau()>0 && copyElementsPartie.getJoueurs()[getNumJoueur()].getPosLigne()!=copyElementsPartie.getJoueurs()[getNumJoueur()].getProchainObjet().getPoslePlateau()){
 				testInsertion3 = copyElementsPartie.getPlateau().calculeChemin(copyElementsPartie.getJoueurs()[getNumJoueur()].getPosLigne(), 
 														copyElementsPartie.getJoueurs()[getNumJoueur()].getPosColonne(), 
 														copyElementsPartie.getJoueurs()[getNumJoueur()].getProchainObjet().getPoslePlateau(), 
@@ -80,7 +91,7 @@ public class JoueurOrdinateurT2 extends JoueurOrdinateur {
 				copyElementsPartie.getJoueurs()[getNumJoueur()].setPosition(copyElementsPartie.getJoueurs()[getNumJoueur()].getProchainObjet().getPoslePlateau(), copyElementsPartie.getJoueurs()[getNumJoueur()].getProchainObjet().getPosconnePlateau()-1);
 			}
 			//même ligne 1 colonne à droite
-			if(copyElementsPartie.getJoueurs()[getNumJoueur()].getProchainObjet().getPoslePlateau()<6 && copyElementsPartie.getJoueurs()[getNumJoueur()].getPosLigne()!=copyElementsPartie.getJoueurs()[getNumJoueur()].getProchainObjet().getPoslePlateau()){
+			if(copyElementsPartie.getJoueurs()[getNumJoueur()].getProchainObjet().getPosconnePlateau()<6 && copyElementsPartie.getJoueurs()[getNumJoueur()].getPosLigne()!=copyElementsPartie.getJoueurs()[getNumJoueur()].getProchainObjet().getPoslePlateau()){
 				testInsertion4 = copyElementsPartie.getPlateau().calculeChemin(copyElementsPartie.getJoueurs()[getNumJoueur()].getPosLigne(), 
 														copyElementsPartie.getJoueurs()[getNumJoueur()].getPosColonne(), 
 														copyElementsPartie.getJoueurs()[getNumJoueur()].getProchainObjet().getPoslePlateau(), 
@@ -89,7 +100,7 @@ public class JoueurOrdinateurT2 extends JoueurOrdinateur {
 			}
 				
 			//Si un chemin vers sont objet est possible on stock i et j (l'entrée et l'orientation de la piece libre)
-			if (testInsertion0!=null || testInsertion1!=null || testInsertion2!=null || testInsertion3!=null || testInsertion4!=null){
+			if (testInsertion1!=null || testInsertion2!=null || testInsertion3!=null || testInsertion4!=null){
 				resultat[1]=fleche;
 				resultat[0]=o;
 				return resultat;
