@@ -237,7 +237,7 @@ public class Partie {
 					// indication de l'endroit de l'insertion pour les autres joueurs
 					String messageInsertionOrdi[]={
 						"",
-						"Isertion faite sur la flèche " + choix ,
+						"Insertion faite sur la flèche " + choix ,
 						""
 					};
 					IG.afficherMessage(messageInsertionOrdi);
