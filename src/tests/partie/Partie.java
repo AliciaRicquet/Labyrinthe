@@ -233,6 +233,7 @@ public class Partie {
 
 					int	choix = joueurs[numJoueurs].choisirOrientationEntree(elementsPartie)[1];
 					elementsPartie.getPieceLibre().setOrientation(joueurs[numJoueurs].choisirOrientationEntree(elementsPartie)[0]);
+					System.out.println(choix + "  ");
 					elementsPartie.insertionPieceLibre(choix);
 					// indication de l'endroit de l'insertion pour les autres joueurs
 					String messageInsertionOrdi[]={

@@ -89,7 +89,7 @@ public class JoueurOrdinateurT3 extends JoueurOrdinateur {
 					copyElementsPartie.getJoueurs()[getNumJoueur()].setPosition(copyElementsPartie.getJoueurs()[getNumJoueur()].getProchainObjet().getPoslePlateau(), copyElementsPartie.getJoueurs()[getNumJoueur()].getProchainObjet().getPosconnePlateau()+1);
 				}
 				
-				//Si un chemin vers sont objet est possible on stock i et j (l'entrée et l'orientation de la piece libre)
+				//Si un chemin vers son objet est possible, on stocke i et j (l'entrée et l'orientation de la piece libre)
 				if (testInsertion0!=null || testInsertion1!=null || testInsertion2!=null || testInsertion3!=null || testInsertion4!=null){
 					resultat[1]=i;
 					resultat[0]=j;
