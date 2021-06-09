@@ -10,6 +10,7 @@ import joueurs.JoueurOrdinateur;
 public class Partie {
 	static double version=0.0;
 
+
 	private ElementsPartie elementsPartie; // Les éléments de la partie.
 
 	/**
@@ -223,8 +224,6 @@ public class Partie {
 					String messageJoueur[]={ // Le joueur qui doit jouer
 						"",
 						"Au tour de " + joueurs[numJoueurs].getNomJoueur(),
-						"",
-						"Cliquez pour continuer ...",
 						""
 					};
 					IG.afficherMessage(messageJoueur);
