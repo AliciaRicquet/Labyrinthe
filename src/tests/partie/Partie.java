@@ -123,7 +123,6 @@ public class Partie {
 		Objet[] tabObjet = elementsPartie.getObjets();
 		Plateau plateau = elementsPartie.getPlateau();
 		boolean gagnant = false;
-		int choix=0;
 		int[][] resultat=null;
 		int[][] resultatPrecis=null;
 		// boucle de la partie (une tours par manche)
@@ -155,7 +154,7 @@ public class Partie {
 					};
 					IG.afficherMessage(messagePieceHorsPlateau);
 					IG.miseAJourAffichage();
-	
+					int choix =0;
 					choix = IG.attendreChoixEntree();
 					elementsPartie.getPieceLibre().setOrientation(IG.recupererOrientationPieceHorsPlateau());
 					elementsPartie.insertionPieceLibre(choix);
@@ -222,6 +221,21 @@ public class Partie {
 							joueurs[numJoueurs].getCategorie()=="OrdiType1" || 
 							joueurs[numJoueurs].getCategorie()=="OrdiType0"){
 
+					String messageJoueur[]={ // Le joueur qui doit jouer
+						"",
+						"Au tour de " + joueurs[numJoueurs].getNomJoueur(),
+						"",
+						"Cliquez pour continuer ...",
+						""
+					};
+					IG.afficherMessage(messageJoueur);
+					IG.miseAJourAffichage();
+					IG.changerJoueurSelectionne(numJoueurs);
+					IG.changerObjetSelectionne(tabObjet[joueurs[numJoueurs].getObjetsJoueur()[joueurs[numJoueurs].getNombreObjetsRecuperes()].getNumeroObjet()].getNumeroObjet());
+					IG.pause(2000);
+
+
+					int choix = 0;
 					if (joueurs[numJoueurs].choisirOrientationEntree(elementsPartie)!=null){
 						choix = joueurs[numJoueurs].choisirOrientationEntree(elementsPartie)[1];
 						elementsPartie.getPieceLibre().setOrientation(joueurs[numJoueurs].choisirOrientationEntree(elementsPartie)[0]);
@@ -229,6 +243,7 @@ public class Partie {
 						choix = Utils.genererEntier(27);
 						elementsPartie.getPieceLibre().setOrientation(IG.recupererOrientationPieceHorsPlateau());
 					}
+					elementsPartie.insertionPieceLibre(choix);
 					// indication de l'endroit de l'insertion pour les autres joueurs
 					String messageInsertionOrdi[]={
 						"",
@@ -237,7 +252,6 @@ public class Partie {
 					};
 					IG.afficherMessage(messageInsertionOrdi);
 					IG.miseAJourAffichage();
-					IG.pause(1500);
 					// modification du plateau en fonction le la flèche "choisie"
 					// objets
 					for (int i = 0; i<tabObjet.length; i++){
@@ -245,62 +259,6 @@ public class Partie {
 							for (int colonne=0; colonne<7;colonne++){
 								if (tabObjet[i].getPoslePlateau()!=ligne && tabObjet[i].getPosconnePlateau()!=colonne){
 									IG.enleverObjetPlateau(ligne, colonne);
-								}
-							}
-						}
-					}
-					for (int i = 0; i<tabObjet.length; i++){
-						if (tabObjet[i].surPlateau()){
-							IG.placerObjetPlateau(tabObjet[i].getNumeroObjet(),tabObjet[i].getPoslePlateau(), tabObjet[i].getPosconnePlateau());
-						}
-					}
-					IG.miseAJourAffichage();
-					// pieces
-					for (int i=0; i<7; i++){
-						for (int j=0; j<7; j++){
-							IG.changerPiecePlateau(i, j, elementsPartie.getPlateau().getPiece(i,j).getModelePiece(), elementsPartie.getPlateau().getPiece(i,j).getOrientationPiece());
-						}
-					}
-					// joueurs
-					IG.changerPieceHorsPlateau(elementsPartie.getPieceLibre().getModelePiece(), elementsPartie.getPieceLibre().getOrientationPiece());
-					for (int i=0; i<nbJoueurs;i++){
-						IG.placerJoueurSurPlateau(i, joueurs[i].getPosLigne(), joueurs[i].getPosColonne());
-						
-					}
-					IG.miseAJourAffichage();
-				
-					// deplacement du joueur Ordinateur
-					// Si il peut aller vers un objet il fait le deplacement
-					resultat = plateau.calculeChemin(joueurs[numJoueurs].getPosLigne(), joueurs[numJoueurs].getPosColonne(), joueurs[numJoueurs].getProchainObjet().getPoslePlateau(),joueurs[numJoueurs].getProchainObjet().getPosconnePlateau());
-					if (resultat!=null){
-						resultatPrecis = plateau.calculeCheminDetaille(resultat, numJoueurs);
-						IG.placerJoueurSurPlateau(joueurs[numJoueurs].getNumJoueur(), resultat[resultat.length-1][0], resultat[resultat.length-1][1]);
-						for(int n = 0; n < resultatPrecis.length; n++) {
-							IG.placerBilleSurPlateau(resultatPrecis[n][0], resultatPrecis[n][1], resultatPrecis[n][2], resultatPrecis[n][3], numJoueurs);
-						}
-						joueurs[numJoueurs].setPosition(resultat[resultat.length-1][0], resultat[resultat.length-1][1]);
-					}else{
-						resultat=plateau.calculeChemin(joueurs[numJoueurs].getPosLigne(), joueurs[numJoueurs].getPosColonne(), 
-										joueurs[numJoueurs].getProchainObjet().getPoslePlateau()-1,joueurs[numJoueurs].getProchainObjet().getPosconnePlateau());
-						int maxi=0;
-						// si il peut aller sur une ligne juste à coter il fait me déplacement
-						// ligne -1
-						if (resultat!= null){
-							resultatPrecis = plateau.calculeCheminDetaille(resultat, numJoueurs);
-							IG.placerJoueurSurPlateau(joueurs[numJoueurs].getNumJoueur(), resultat[resultat.length-1][0], resultat[resultat.length-1][1]);
-							for(int n = 0; n < resultatPrecis.length; n++) {
-								IG.placerBilleSurPlateau(resultatPrecis[n][0], resultatPrecis[n][1], resultatPrecis[n][2], resultatPrecis[n][3], numJoueurs);
-							}
-							joueurs[numJoueurs].setPosition(resultat[resultat.length-1][0], resultat[resultat.length-1][1]);
-						}else{
-							// ligne +1
-							resultat=plateau.calculeChemin(joueurs[numJoueurs].getPosLigne(), joueurs[numJoueurs].getPosColonne(), 
-										joueurs[numJoueurs].getProchainObjet().getPoslePlateau()+1,joueurs[numJoueurs].getProchainObjet().getPosconnePlateau());
-							if (resultat!= null){
-								resultatPrecis = plateau.calculeCheminDetaille(resultat, numJoueurs);
-								IG.placerJoueurSurPlateau(joueurs[numJoueurs].getNumJoueur(), resultat[resultat.length-1][0], resultat[resultat.length-1][1]);
-								for(int n = 0; n < resultatPrecis.length; n++) {
-									IG.placerBilleSurPlateau(resultatPrecis[n][0], resultatPrecis[n][1], resultatPrecis[n][2], resultatPrecis[n][3], numJoueurs);
 								}
 								joueurs[numJoueurs].setPosition(resultat[resultat.length-1][0], resultat[resultat.length-1][1]);
 							}else{
@@ -353,14 +311,48 @@ public class Partie {
 								}
 							}
 						}
+					}
+					for (int i = 0; i<tabObjet.length; i++){
+						if (tabObjet[i].surPlateau()){
+							IG.placerObjetPlateau(tabObjet[i].getNumeroObjet(),tabObjet[i].getPoslePlateau(), tabObjet[i].getPosconnePlateau());
+						}
+					}
+					IG.miseAJourAffichage();
+					// pieces
+					for (int i=0; i<7; i++){
+						for (int j=0; j<7; j++){
+							IG.changerPiecePlateau(i, j, elementsPartie.getPlateau().getPiece(i,j).getModelePiece(), elementsPartie.getPlateau().getPiece(i,j).getOrientationPiece());
+						}
+					}
+					// joueurs
+					IG.changerPieceHorsPlateau(elementsPartie.getPieceLibre().getModelePiece(), elementsPartie.getPieceLibre().getOrientationPiece());
+					for (int i=0; i<nbJoueurs;i++){
+						IG.placerJoueurSurPlateau(i, joueurs[i].getPosLigne(), joueurs[i].getPosColonne());
+						
+					}
+					IG.miseAJourAffichage();
+				
+					// deplacement du joueur Ordinateur
+					// Si il peut aller vers un objet il fait le deplacement
+					int[] casArr = joueurs[numJoueurs].choisirCaseArrivee(elementsPartie);
+					resultat = plateau.calculeChemin(joueurs[numJoueurs].getPosLigne(), joueurs[numJoueurs].getPosColonne(), casArr[0], casArr[1]);
+					resultatPrecis = plateau.calculeCheminDetaille(resultat, numJoueurs);
+					IG.placerJoueurSurPlateau(joueurs[numJoueurs].getNumJoueur(), resultat[resultat.length-1][0], resultat[resultat.length-1][1]);
+					for(int n = 0; n < resultatPrecis.length; n++) {
+						IG.placerBilleSurPlateau(resultatPrecis[n][0], resultatPrecis[n][1], resultatPrecis[n][2], resultatPrecis[n][3], numJoueurs);
+					}
+					joueurs[numJoueurs].setPosition(resultat[resultat.length-1][0], resultat[resultat.length-1][1]);
+					IG.pause(2000);
 				}
-			}
 				IG.miseAJourAffichage();
 				// supprimer toutes les billes du plateau
-				for(int x=0;x<resultatPrecis.length;x++) {
-					IG.supprimerBilleSurPlateau(resultatPrecis[x][0], resultatPrecis[x][1], resultatPrecis[x][2], resultatPrecis[x][3]);
-					IG.miseAJourAffichage();
+				if(resultatPrecis!=null){
+					for(int x=0;x<resultatPrecis.length;x++) {
+						IG.supprimerBilleSurPlateau(resultatPrecis[x][0], resultatPrecis[x][1], resultatPrecis[x][2], resultatPrecis[x][3]);
+						IG.miseAJourAffichage();
+					}
 				}
+				
 				// enleve m'objet du plateau si il est recuperé
 				if(joueurs[numJoueurs].getPosLigne() == joueurs[numJoueurs].getProchainObjet().getPoslePlateau() && joueurs[numJoueurs].getPosColonne() == joueurs[numJoueurs].getProchainObjet().getPosconnePlateau()){
 					joueurs[numJoueurs].getProchainObjet().enleveDuPlateau();
