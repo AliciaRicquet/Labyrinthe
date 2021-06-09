@@ -10,6 +10,7 @@ import joueurs.JoueurOrdinateur;
 public class Partie {
 	static double version=0.0;
 
+
 	private ElementsPartie elementsPartie; // Les éléments de la partie.
 
 	/**
@@ -223,8 +224,6 @@ public class Partie {
 					String messageJoueur[]={ // Le joueur qui doit jouer
 						"",
 						"Au tour de " + joueurs[numJoueurs].getNomJoueur(),
-						"",
-						"Cliquez pour continuer ...",
 						""
 					};
 					IG.afficherMessage(messageJoueur);
@@ -234,7 +233,6 @@ public class Partie {
 
 					int	choix = joueurs[numJoueurs].choisirOrientationEntree(elementsPartie)[1];
 					elementsPartie.getPieceLibre().setOrientation(joueurs[numJoueurs].choisirOrientationEntree(elementsPartie)[0]);
-					System.out.println(choix + "  ");
 					elementsPartie.insertionPieceLibre(choix);
 					// indication de l'endroit de l'insertion pour les autres joueurs
 					String messageInsertionOrdi[]={
