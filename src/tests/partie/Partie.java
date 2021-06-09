@@ -220,7 +220,7 @@ public class Partie {
 							joueurs[numJoueurs].getCategorie()=="OrdiType2" || 
 							joueurs[numJoueurs].getCategorie()=="OrdiType1" || 
 							joueurs[numJoueurs].getCategorie()=="OrdiType0"){
-
+					
 					String messageJoueur[]={ // Le joueur qui doit jouer
 						"",
 						"Au tour de " + joueurs[numJoueurs].getNomJoueur(),
@@ -232,17 +232,10 @@ public class Partie {
 					IG.miseAJourAffichage();
 					IG.changerJoueurSelectionne(numJoueurs);
 					IG.changerObjetSelectionne(tabObjet[joueurs[numJoueurs].getObjetsJoueur()[joueurs[numJoueurs].getNombreObjetsRecuperes()].getNumeroObjet()].getNumeroObjet());
-					IG.pause(2000);
 
-
-					int choix = 0;
-					if (joueurs[numJoueurs].choisirOrientationEntree(elementsPartie)!=null){
-						choix = joueurs[numJoueurs].choisirOrientationEntree(elementsPartie)[1];
-						elementsPartie.getPieceLibre().setOrientation(joueurs[numJoueurs].choisirOrientationEntree(elementsPartie)[0]);
-					}else{
-						choix = Utils.genererEntier(27);
-						elementsPartie.getPieceLibre().setOrientation(IG.recupererOrientationPieceHorsPlateau());
-					}
+					int	choix = joueurs[numJoueurs].choisirOrientationEntree(elementsPartie)[1];
+					elementsPartie.getPieceLibre().setOrientation(joueurs[numJoueurs].choisirOrientationEntree(elementsPartie)[0]);
+					System.out.println(choix + "  ");
 					elementsPartie.insertionPieceLibre(choix);
 					// indication de l'endroit de l'insertion pour les autres joueurs
 					String messageInsertionOrdi[]={
@@ -293,7 +286,6 @@ public class Partie {
 						IG.placerBilleSurPlateau(resultatPrecis[n][0], resultatPrecis[n][1], resultatPrecis[n][2], resultatPrecis[n][3], numJoueurs);
 					}
 					joueurs[numJoueurs].setPosition(resultat[resultat.length-1][0], resultat[resultat.length-1][1]);
-					IG.pause(2000);
 				}
 				IG.miseAJourAffichage();
 				// supprimer toutes les billes du plateau
@@ -323,7 +315,6 @@ public class Partie {
 							break;
 						}
 					}
-				
 				}
 			}
 		}
