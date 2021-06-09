@@ -4,6 +4,7 @@ import composants.Objet;
 import composants.Piece;
 import composants.Plateau;
 import composants.Utils;
+import grafix.interfaceGraphique.IG;
 import partie.ElementsPartie;
 
 /**
@@ -34,6 +35,13 @@ public class JoueurOrdinateurT2 extends JoueurOrdinateur {
 	public String getCategorie() {
 		return "OrdiType2";
 	}
+	@Override
+	public int[] choisirOrientationEntree(ElementsPartie elementsPartie){
+		int resultat[]=new int[2];
+		resultat[1]=3;
+		resultat[0]=IG.recupererOrientationPieceHorsPlateau();
+		return resultat;
+	}
 
 
 	@Override
@@ -46,4 +54,3 @@ public class JoueurOrdinateurT2 extends JoueurOrdinateur {
 	}
 
 }
-

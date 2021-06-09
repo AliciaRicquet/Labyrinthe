@@ -65,6 +65,7 @@ public class TestPlateau {
                 }
             }
         }
+        
         for (int i=0;i<7;i++){
             for (int j=0;j<7;j++){
                 int[][] resultat = plateau.calculeChemin(3, 3, i, j);
@@ -83,4 +84,3 @@ public class TestPlateau {
 		System.exit(0);
     }
 }
-

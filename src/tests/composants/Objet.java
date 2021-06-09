@@ -23,7 +23,7 @@ public class Objet {
 	public Objet(int numObjet) {
 		this.numObjet = numObjet;
 		this.poslePlateau = -1;
-		this.poslePlateau = -1;
+		this.posconnePlateau = -1;
 		this.surPlateau = false;
 	}
 
@@ -110,8 +110,8 @@ public class Objet {
 	 * @param connePlateau Un entier compris entre 0 et 6.
 	 */
 	public void positionneObjet(int lePlateau,int connePlateau){
-		poslePlateau = lePlateau;
-		posconnePlateau = connePlateau;
+		this.poslePlateau = lePlateau;
+		this.posconnePlateau = connePlateau;
 		surPlateau = true;
 	}
 

@@ -119,7 +119,7 @@ public class Plateau {
 
 	/**
 	 * 
-	 * A Faire (16/05/2021 EH EnCours)
+	 * A Faire (16/05/2021 EH Finalisée)
 	 * 
 	 * Méthode permettant de retourner un éventuel chemin entre deux cases du plateau compte tenu des pièces posées sur le plateau.
 	 * Dans le cas où il n'y a pas de chemin entre les deux cases, la valeur null est retournée.

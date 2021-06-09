@@ -1,11 +1,18 @@
 {
     "java.project.referencedLibraries": [
         "lib/**/*.jar",
+<<<<<<< HEAD
+        "src/libIG24.jar"
+    ],
+    "java.project.sourcePaths": [
+        "src/tests"
+=======
         "src/libIG19.jar",
         "libIG24.jar"
     ],
     "java.project.sourcePaths": [
         "src/tests",
         "src"
+>>>>>>> Alicia
     ]
 }

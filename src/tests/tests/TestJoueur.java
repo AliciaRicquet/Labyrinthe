@@ -1,6 +1,5 @@
 package tests;
 import joueurs.Joueur;
-import composants.Utils;
 import composants.Plateau;
 import composants.Piece;
 import grafix.interfaceGraphique.IG;
@@ -88,9 +87,8 @@ public class TestJoueur {
                         if (resultat!=null){
                             IG.placerJoueurSurPlateau(joueurs[i].getNumJoueur(), resultat[resultat.length-1][0], resultat[resultat.length-1][1]);
                             for (int k=0; k<resultat.length;k++){
-                                IG.placerBilleSurPlateau(resultat[k][0], resultat[k][1], 1, 1, 0);
+                                IG.placerBilleSurPlateau(resultat[k][0], resultat[k][1], 1, 1, i);
                             }
-                            break;
                         }
                     }
                 }
@@ -110,4 +108,3 @@ public class TestJoueur {
 
     }
 }
-
