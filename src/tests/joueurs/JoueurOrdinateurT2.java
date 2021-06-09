@@ -42,13 +42,6 @@ public class JoueurOrdinateurT2 extends JoueurOrdinateur {
 		resultat[0]=IG.recupererOrientationPieceHorsPlateau();
 		return resultat;
 	}
-	@Override
-	public int[] choisirCaseArrivee(ElementsPartie elementsPartie) {
-		int resultat[]=new int[2];
-		resultat[0]=this.getPosLigne();
-		resultat[1]=this.getPosColonne();
-		return resultat;
-	}
 
 
 	@Override
