@@ -145,8 +145,7 @@ public class Plateau {
 		couple[0]=posLigCaseDep;
 		couple[1]=posColCaseDep;
 		chemin.add(couple); // première case du chemin
-		//int cpt=0;
-		while (chemin.isEmpty()==false  /*cpt!=20*/){
+		while (chemin.isEmpty()==false  ){
 			if (bool[posLigCaseArr][posColCaseArr]==true){ // break si la case d'arrivée est atteinte
 				break;
 			}
