@@ -130,7 +130,7 @@ public class Partie {
 			//boucle de tours des joueurs de la partie
 			for(int numJoueurs = 0; numJoueurs < nbJoueurs; numJoueurs ++){
 				// deplacement pour les joueurs type Humain
-				if(joueurs[numJoueurs].getCategorie()!="OrdiType3" && joueurs[numJoueurs].getCategorie()!="OrdiType2" && joueurs[numJoueurs].getCategorie()!="OrdiType1" && joueurs[numJoueurs].getCategorie()!="OrdiType0"){
+				if(joueurs[numJoueurs].getCategorie()=="Humain"){
 					String messageJoueur[]={ // Le joueur qui doit jouer
 					"",
 					"Au tour de " + joueurs[numJoueurs].getNomJoueur(),
