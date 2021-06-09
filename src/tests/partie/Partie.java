@@ -10,7 +10,6 @@ import joueurs.JoueurOrdinateur;
 public class Partie {
 	static double version=0.0;
 
-
 	private ElementsPartie elementsPartie; // Les éléments de la partie.
 
 	/**
