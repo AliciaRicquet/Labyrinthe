@@ -73,7 +73,7 @@ public class JoueurOrdinateurT1 extends JoueurOrdinateur {
 			copyElementsPartie.getJoueurs()[getNumJoueur()].setPosition(copyElementsPartie.getJoueurs()[getNumJoueur()].getProchainObjet().getPoslePlateau()+1, copyElementsPartie.getJoueurs()[getNumJoueur()].getProchainObjet().getPosconnePlateau());
 		}
 		//même ligne 1 colonne à gauche
-		if(copyElementsPartie.getJoueurs()[getNumJoueur()].getProchainObjet().getPoslePlateau()>0 && copyElementsPartie.getJoueurs()[getNumJoueur()].getPosLigne()!=copyElementsPartie.getJoueurs()[getNumJoueur()].getProchainObjet().getPoslePlateau()){
+		if(copyElementsPartie.getJoueurs()[getNumJoueur()].getProchainObjet().getPosconnePlateau()>0 && copyElementsPartie.getJoueurs()[getNumJoueur()].getPosLigne()!=copyElementsPartie.getJoueurs()[getNumJoueur()].getProchainObjet().getPoslePlateau()){
 			testInsertion3 = copyElementsPartie.getPlateau().calculeChemin(copyElementsPartie.getJoueurs()[getNumJoueur()].getPosLigne(), 
 													copyElementsPartie.getJoueurs()[getNumJoueur()].getPosColonne(), 
 													copyElementsPartie.getJoueurs()[getNumJoueur()].getProchainObjet().getPoslePlateau(), 
@@ -81,7 +81,7 @@ public class JoueurOrdinateurT1 extends JoueurOrdinateur {
 			copyElementsPartie.getJoueurs()[getNumJoueur()].setPosition(copyElementsPartie.getJoueurs()[getNumJoueur()].getProchainObjet().getPoslePlateau(), copyElementsPartie.getJoueurs()[getNumJoueur()].getProchainObjet().getPosconnePlateau()-1);
 		}
 		//même ligne 1 colonne à droite
-		if(copyElementsPartie.getJoueurs()[getNumJoueur()].getProchainObjet().getPoslePlateau()<6 && copyElementsPartie.getJoueurs()[getNumJoueur()].getPosLigne()!=copyElementsPartie.getJoueurs()[getNumJoueur()].getProchainObjet().getPoslePlateau()){
+		if(copyElementsPartie.getJoueurs()[getNumJoueur()].getProchainObjet().getPosconnePlateau()<6 && copyElementsPartie.getJoueurs()[getNumJoueur()].getPosLigne()!=copyElementsPartie.getJoueurs()[getNumJoueur()].getProchainObjet().getPoslePlateau()){
 			testInsertion4 = copyElementsPartie.getPlateau().calculeChemin(copyElementsPartie.getJoueurs()[getNumJoueur()].getPosLigne(), 
 													copyElementsPartie.getJoueurs()[getNumJoueur()].getPosColonne(), 
 													copyElementsPartie.getJoueurs()[getNumJoueur()].getProchainObjet().getPoslePlateau(), 
