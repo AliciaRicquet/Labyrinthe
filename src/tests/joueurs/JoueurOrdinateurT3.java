@@ -38,6 +38,7 @@ public class JoueurOrdinateurT3 extends JoueurOrdinateur {
 	@Override
 	public int[] choisirOrientationEntree(ElementsPartie elementsPartie){
 		int resultat[]=new int[2];
+		// test pour un chemin vers sont objet
 		for (int i=0; i<=27;i++){ // test toutes les entrées du plateau
 			for (int j=0; j<4; j++){ // test toutes les orientation de la piece hors plateau
 
@@ -45,18 +46,30 @@ public class JoueurOrdinateurT3 extends JoueurOrdinateur {
 				ElementsPartie copyElementsPartie = elementsPartie.copy();
 				copyElementsPartie.getPieceLibre().setOrientation(j);
 				copyElementsPartie.insertionPieceLibre(i);
-				int[][] testInsertion1=null;
-				int[][] testInsertion2=null;
-				int[][] testInsertion3=null;
-				int[][] testInsertion4=null;
 				//emplacement objet à récupérér
 				int[][] testInsertion0 = copyElementsPartie.getPlateau().calculeChemin(copyElementsPartie.getJoueurs()[getNumJoueur()].getPosLigne(), 
 															copyElementsPartie.getJoueurs()[getNumJoueur()].getPosColonne(), 
 															copyElementsPartie.getJoueurs()[getNumJoueur()].getProchainObjet().getPoslePlateau(), 
 															copyElementsPartie.getJoueurs()[getNumJoueur()].getProchainObjet().getPosconnePlateau());
 				copyElementsPartie.getJoueurs()[getNumJoueur()].setPosition(copyElementsPartie.getJoueurs()[getNumJoueur()].getProchainObjet().getPoslePlateau(), copyElementsPartie.getJoueurs()[getNumJoueur()].getProchainObjet().getPosconnePlateau());
+				if (testInsertion0!=null){
+					resultat[1]=i;
+					resultat[0]=j;
+					return resultat;
+				}
+			}
+		}
+		// test pour un chemin sur la même ligne ou même colonne que l'objet a récupéré
+		for (int i=0; i<=27;i++){ // test toutes les entrées du plateau
+			for (int j=0; j<4; j++){  // test toutes les orientation de la piece hors plateau
+				ElementsPartie copyElementsPartie = elementsPartie.copy();
+				copyElementsPartie.getPieceLibre().setOrientation(j);
+				copyElementsPartie.insertionPieceLibre(i);
+				int[][] testInsertion1=null;
+				int[][] testInsertion2=null;
+				int[][] testInsertion3=null;
+				int[][] testInsertion4=null;
 				//même colonne 1 ligne au dessus
-				
 				if (copyElementsPartie.getJoueurs()[getNumJoueur()].getProchainObjet().getPoslePlateau()>0 && copyElementsPartie.getJoueurs()[getNumJoueur()].getPosColonne()!=copyElementsPartie.getJoueurs()[getNumJoueur()].getProchainObjet().getPosconnePlateau()){
 					testInsertion1 = copyElementsPartie.getPlateau().calculeChemin(copyElementsPartie.getJoueurs()[getNumJoueur()].getPosLigne(), 
 															copyElementsPartie.getJoueurs()[getNumJoueur()].getPosColonne(), 
@@ -73,7 +86,7 @@ public class JoueurOrdinateurT3 extends JoueurOrdinateur {
 					copyElementsPartie.getJoueurs()[getNumJoueur()].setPosition(copyElementsPartie.getJoueurs()[getNumJoueur()].getProchainObjet().getPoslePlateau()+1, copyElementsPartie.getJoueurs()[getNumJoueur()].getProchainObjet().getPosconnePlateau());
 				}
 				//même ligne 1 colonne à gauche
-				if(copyElementsPartie.getJoueurs()[getNumJoueur()].getProchainObjet().getPoslePlateau()>0 && copyElementsPartie.getJoueurs()[getNumJoueur()].getPosLigne()!=copyElementsPartie.getJoueurs()[getNumJoueur()].getProchainObjet().getPoslePlateau()){
+				if(copyElementsPartie.getJoueurs()[getNumJoueur()].getProchainObjet().getPosconnePlateau()>0 && copyElementsPartie.getJoueurs()[getNumJoueur()].getPosLigne()!=copyElementsPartie.getJoueurs()[getNumJoueur()].getProchainObjet().getPoslePlateau()){
 					testInsertion3 = copyElementsPartie.getPlateau().calculeChemin(copyElementsPartie.getJoueurs()[getNumJoueur()].getPosLigne(), 
 															copyElementsPartie.getJoueurs()[getNumJoueur()].getPosColonne(), 
 															copyElementsPartie.getJoueurs()[getNumJoueur()].getProchainObjet().getPoslePlateau(), 
@@ -81,7 +94,7 @@ public class JoueurOrdinateurT3 extends JoueurOrdinateur {
 					copyElementsPartie.getJoueurs()[getNumJoueur()].setPosition(copyElementsPartie.getJoueurs()[getNumJoueur()].getProchainObjet().getPoslePlateau(), copyElementsPartie.getJoueurs()[getNumJoueur()].getProchainObjet().getPosconnePlateau()-1);
 				}
 				//même ligne 1 colonne à droite
-				if(copyElementsPartie.getJoueurs()[getNumJoueur()].getProchainObjet().getPoslePlateau()<6 && copyElementsPartie.getJoueurs()[getNumJoueur()].getPosLigne()!=copyElementsPartie.getJoueurs()[getNumJoueur()].getProchainObjet().getPoslePlateau()){
+				if(copyElementsPartie.getJoueurs()[getNumJoueur()].getProchainObjet().getPosconnePlateau()<6 && copyElementsPartie.getJoueurs()[getNumJoueur()].getPosLigne()!=copyElementsPartie.getJoueurs()[getNumJoueur()].getProchainObjet().getPoslePlateau()){
 					testInsertion4 = copyElementsPartie.getPlateau().calculeChemin(copyElementsPartie.getJoueurs()[getNumJoueur()].getPosLigne(), 
 															copyElementsPartie.getJoueurs()[getNumJoueur()].getPosColonne(), 
 															copyElementsPartie.getJoueurs()[getNumJoueur()].getProchainObjet().getPoslePlateau(), 
@@ -89,8 +102,8 @@ public class JoueurOrdinateurT3 extends JoueurOrdinateur {
 					copyElementsPartie.getJoueurs()[getNumJoueur()].setPosition(copyElementsPartie.getJoueurs()[getNumJoueur()].getProchainObjet().getPoslePlateau(), copyElementsPartie.getJoueurs()[getNumJoueur()].getProchainObjet().getPosconnePlateau()+1);
 				}
 				
-				//Si un chemin vers son objet est possible, on stocke i et j (l'entrée et l'orientation de la piece libre)
-				if (testInsertion0!=null || testInsertion1!=null || testInsertion2!=null || testInsertion3!=null || testInsertion4!=null){
+				//Si un chemin vers sont objet est possible on stock i et j (l'entrée et l'orientation de la piece libre)
+				if (testInsertion1!=null || testInsertion2!=null || testInsertion3!=null || testInsertion4!=null){
 					resultat[1]=i;
 					resultat[0]=j;
 					return resultat;
